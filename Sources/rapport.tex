@@ -3,7 +3,7 @@
 \input{input/package}
 
 \usepackage{xcolor}
-
+\usepackage{dsfont}
 %\usepackage{layout}
 %\usepackage{rowcolor}
 \definecolor{bleuX}{RGB}{0,62,92}
@@ -13,6 +13,7 @@
 
 \newcommand{\esp}{\mathbb{E}}
 \renewcommand{\exp}{\mathrm{e}^}
+\renewcommand{\P}{\mathbb{P}}
 
 
 \title{Vitesse d'invasion pour un modèle de reproduction et dispersion}
@@ -26,7 +27,7 @@
 	\renewcommand\labelitemi{\textbullet}
 	\begin{itemize}
 	
-	\item	Soit $\alpha< 1$ et $\lambda_1, \lambda_2$ dans $\mathbb{R}$.
+	\item	Soit $\alpha\in [0,1]$ et $\lambda_1, \lambda_2$ dans $\mathbb{R}$.
 	
 			\begin{IEEEeqnarray*}{l C c}
 				\esp( \exp{(\alpha \lambda_1 + (1 - \alpha)\lambda_2) X}) & = &  \esp((\exp{\lambda_1 X})^{\alpha}(\exp{\lambda_2 X})^{1-\alpha}\\
@@ -34,7 +35,7 @@
 			\end{IEEEeqnarray*}
 	
 	
-			Ici la dernière inégalité viens de l'inégalité de Hölder. En passant au logarithme il viens donc naturellement :	
+			Ici la dernière inégalité est l'inégalité de Hölder. En passant au logarithme il vient donc naturellement :	
 	
 			\begin{equation*}
 				\Lambda((\alpha \lambda_1 + (1 - \alpha)\lambda_2) X) \leqslant \alpha \Lambda(\lambda_1 X) + (1-\alpha) \Lambda(\lambda_2 X)
@@ -51,7 +52,7 @@
 
 	\item	$\Lambda(0)=0$ donc :
 			\begin{equation*}
-			\forall x \in \mathbb{R}, \sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda)) \geqslant 0 x - \Lambda(0) = 0
+			\forall x \in \mathbb{R}, \sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda)) \geqslant 0\cdotp x - \Lambda(0) = 0
 			\end{equation*}	
 			\underline{Donc $\Psi\geqslant0$.}
 			
@@ -68,7 +69,7 @@
 	\item	Soit $x\geqslant m$ et $\lambda <0$. Alors on peut écrire :
 			\begin{IEEEeqnarray*}{C}
 			\lambda x -\Lambda(\lambda) \leqslant \lambda m - \Lambda(\lambda) = 0\\
-			\lambda x -\Lambda(\lambda) \leqslant0 \leqslant\sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda))
+			\lambda x -\Lambda(\lambda) \leqslant0 \leqslant\sup_{\lambda \in \mathbb{R}}\{\lambda x - \Lambda(\lambda)\}
 			\end{IEEEeqnarray*}
 			
 			\fbox{Donc prendre le supremum des $f_\lambda$ pour $\lambda\geqslant0$ est suffisant pour définir $\Psi$}
@@ -76,4 +77,35 @@
 
 	\end{itemize}
 		 
+	\subsection{}
+	
+	\begin{IEEEeqnarray*}{cCc}
+		\P(S_n \geqslant nx) & = & \esp(\mathds{1}_{S_n-nx\geqslant0})
+	\end{IEEEeqnarray*}
+	
+	Comme $S_n-nx\geqslant0$ alors pour tout $\lambda$ positif, $\exp{\lambda (S_n-nx)}\geqslant1$ et
+
+	\begin{equation*}
+		\esp(\mathds{1}_{S_n-nx\geqslant0}) \leqslant \esp(\exp{\lambda (S_n-nx)}\mathds{1}_{S_n-nx\geqslant0}) \leqslant \esp(\exp{\lambda (S_n - x)})
+	\end{equation*}
+	On a donc :
+	\begin{equation*}
+	\P(S_n \geqslant nx) \leqslant \exp{-\lambda n x}\esp(\exp{\lambda S_n})
+	\end{equation*}
+	Comme les variables $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont des v.a indépendantes de même loi on peut écrire que $\esp(\exp{\lambda S_n})=(\esp(\exp{\lambda X}))^n=\exp{n\Lambda(\lambda)}$.
+	
+	Par le calcul on obtient alors :
+	\begin{IEEEeqnarray*}{ccCcc}
+		\P(S_n \geqslant nx) && \leqslant &&  \exp{-\lambda n x}\exp{n\Lambda(\lambda)} \\
+		\log \P(S_n \geqslant nx) && \leqslant && -\lambda n x + n\Lambda(\lambda) \\
+		-\frac{1}{n} \log \P(S_n \geqslant nx) && \geqslant && \lambda  x -\Lambda(\lambda) \IEEEyesnumber \label{IneQ2}\\
+	\end{IEEEeqnarray*}
+	
+	\ref{IneQ2} est vrai pour tout $\lambda$ positif et pour tout $n$. Donc le passage au supremum pour $\lambda$ positif et à la limite inférieure pour $n$ est possible et ne modifie pas l'inégalité.
+	
+	On obtient bien alors :
+	\begin{equation}
+	\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}
+	\end{equation}
+	
 \end{document}
