@@ -1,0 +1,79 @@
+\documentclass[12pt,titlepage=true]{article}
+
+\input{input/package}
+
+\usepackage{xcolor}
+
+%\usepackage{layout}
+%\usepackage{rowcolor}
+\definecolor{bleuX}{RGB}{0,62,92}
+\renewcommand{\arraystretch}{1.3}
+\renewcommand\labelitemi{\textbullet}
+\input{input/meptex}
+
+\newcommand{\esp}{\mathbb{E}}
+\renewcommand{\exp}{\mathrm{e}^}
+
+
+\title{Vitesse d'invasion pour un modèle de reproduction et dispersion}
+\author{Augustin Lenormand \and Basile Bruneau}
+
+\begin{document}
+\maketitle
+
+\section{Grandes déviations d'une marche aléatoire}
+	\subsection{}
+	\renewcommand\labelitemi{\textbullet}
+	\begin{itemize}
+	
+	\item	Soit $\alpha< 1$ et $\lambda_1, \lambda_2$ dans $\mathbb{R}$.
+	
+			\begin{IEEEeqnarray*}{l C c}
+				\esp( \exp{(\alpha \lambda_1 + (1 - \alpha)\lambda_2) X}) & = &  \esp((\exp{\lambda_1 X})^{\alpha}(\exp{\lambda_2 X})^{1-\alpha}\\
+												   					  & \leqslant & (\esp(\exp{\lambda_1 X}))^{\alpha} (\esp(\exp{\lambda_2 X}))^{1- \alpha}
+			\end{IEEEeqnarray*}
+	
+	
+			Ici la dernière inégalité viens de l'inégalité de Hölder. En passant au logarithme il viens donc naturellement :	
+	
+			\begin{equation*}
+				\Lambda((\alpha \lambda_1 + (1 - \alpha)\lambda_2) X) \leqslant \alpha \Lambda(\lambda_1 X) + (1-\alpha) \Lambda(\lambda_2 X)
+			\end{equation*}
+		
+			\fbox{Donc $\Lambda$ est convexe.}
+		
+	\item	De même les fonctions $f_\lambda$ telles que $f_\lambda (x)=\lambda x - \Lambda (\lambda)$ sont toutes convexes. 
+			Donc par définition leurs épigraphes sont convexes.
+		
+			Or l'épigraphe du supremum pour $\lambda$ dans $\mathbb{R}$ de ces fonctions est l'intersection des épigraphes de toutes ces fonctions. Comme intersection d'ensemble convexes , il est donc convexe lui aussi. Donc l'épigraphe de $\Psi$ est convexe.
+		
+			\fbox{Donc $\Psi$ est convexe.}
+
+	\item	$\Lambda(0)=0$ donc :
+			\begin{equation*}
+			\forall x \in \mathbb{R}, \sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda)) \geqslant 0 x - \Lambda(0) = 0
+			\end{equation*}	
+			\underline{Donc $\Psi\geqslant0$.}
+			
+			Soit $\lambda$ dans $\mathbb{R}$.
+			\begin{equation*}
+			\exp{f_\lambda(m))}=\frac{\exp{\lambda \esp(X)}}{\esp(\exp{\lambda X})}
+			\end{equation*}			
+			Or la fonction $x \mapsto \exp{\lambda x}$ est convexe, donc d'après l'inégalité de Jensen,	$\exp{\lambda \esp(X)}\leqslant\esp(\exp{\lambda X})$. Ainsi $\exp{f_\lambda(m))}\leqslant 1$ et $\lambda \esp(X) - \Lambda(\lambda)\leqslant 0$. 
+			
+			Donc $\Psi(\esp(X))\leqslant0$. Or $\Psi\geqslant0$.
+			
+			\fbox{Donc $\Psi$ admet un minimum en $m$ et $\Psi(m)=0$.}
+
+	\item	Soit $x\geqslant m$ et $\lambda <0$. Alors on peut écrire :
+			\begin{IEEEeqnarray*}{C}
+			\lambda x -\Lambda(\lambda) \leqslant \lambda m - \Lambda(\lambda) = 0\\
+			\lambda x -\Lambda(\lambda) \leqslant0 \leqslant\sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda))
+			\end{IEEEeqnarray*}
+			
+			\fbox{Donc prendre le supremum des $f_\lambda$ pour $\lambda\geqslant0$ est suffisant pour définir $\Psi$}
+			
+
+	\end{itemize}
+		 
+\end{document}

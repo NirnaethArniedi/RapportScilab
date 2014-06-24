@@ -1,0 +1,15 @@
+\documentclass[12pt,titlepage=true]{scrreprt}
+
+\input{input/package}
+\usepackage{xcolor}
+\usepackage{colortbl}
+%\usepackage{layout}
+\usepackage{pstricks-add}
+\usepackage{multirow}
+\usepackage{bigdelim}
+%\usepackage{rowcolor}
+\definecolor{bleuX}{RGB}{0,62,92}
+\renewcommand{\arraystretch}{1.3}
+\renewcommand{\labelitemi}{\textbullet}
+
+		
