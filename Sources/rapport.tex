@@ -33,7 +33,7 @@
 	\maketitle
 
 	\section{Grandes déviations d'une marche aléatoire}
-		\subsection{}\setcounter{equation}{0}
+		\subsection{}\setcounter{equation}{0} %Question 1
 			
 			\renewcommand\labelitemi{\textbullet}
 			
@@ -92,7 +92,7 @@
 		
 			\end{itemize}
 		 
-		\subsection{}\setcounter{equation}{0}
+		\subsection{}\setcounter{equation}{0} %Question 2
 	
 			\begin{IEEEeqnarray*}{cCc}
 				\P(S_n \geqslant nx) & = & \esp(\mathds{1}_{S_n-nx\geqslant0})
@@ -124,10 +124,10 @@
 			On obtient bien alors :
 	
 			\begin{equation}
-				\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}
+				\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}\label{resQ2}
 			\end{equation}
 	
-		\subsection{}\setcounter{equation}{0}
+		\subsection{}\setcounter{equation}{0} %Question 3
 	
 			\begin{itemize}
 				\item 	Montrons tout d'abord l'égalité proposée par l'énoncée.	Soit $\Phi$ une fonction mesurable bornée. Alors, en prenant $\varPi $ la loi de probabilité du vecteur $(X_1,\cdots,X_n)$,
@@ -181,7 +181,7 @@
 							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right)=\esp\left(\mathds{1}_{\theta_n\in\left[0,\frac{\sqrt{n}}{\sigt}(y-x)\right]}\right) , \theta_n=\frac{\sqrt{n}}{\sigt}\left(\frac{\tilde{S_n}}{n}-x\right)
 						\end{equation*}
 				
-						Pour $n$ grand $\theta_n\sim\mathcal{N}(0,1)$ et $\frac{\sqrt{n}}{\sigt}(y-x)\rightarrow\infty$. En limite, on peut donc écrire :
+						Or $\esp(\Xt)=x$, donc pour $n$ grand $\theta_n\sim\mathcal{N}(0,1)$ et $\frac{\sqrt{n}}{\sigt}(y-x)\rightarrow\infty$. En limite, on peut donc écrire :
 				
 						\begin{equation*}
 							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \underset{n\to+\infty}{\longrightarrow}\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
@@ -198,13 +198,37 @@
 						Ainsi on a bien montré : 
 				
 						\begin{equation}
-							\boxed{\limsup_{n\to\infty}-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) \leqslant \tau y - \Lambda (\tau)}
+							\boxed{\limsup_{n\to\infty}-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) \leqslant \tau y - \Lambda (\tau)}\label{resQ3}
 						\end{equation}
 				
 			\end{itemize}
 	
 	\subsection{}\setcounter{equation}{0}
 		
-	
+		
+		\begin{IEEEeqnarray*}{RCL}
+			\P(S_n \geqslant nx) 		 		     & \geqslant & \P(nx\leqslant S_n\leqslant ny) 					 \\
+			\log \P(S_n \geqslant nx) 				 & \geqslant & \log \P(nx\leqslant S_n\leqslant ny) 			 \\
+			-\frac{1}{n} \log \P(S_n \geqslant nx)   & \leqslant & -\frac{1}{n} \log \P(nx\leqslant S_n\leqslant ny) \\
+			\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) & \leqslant & \limsup_{n\to\infty} -\frac{1}{n} \log \P(nx\leqslant S_n\leqslant ny) \IEEEyesnumber \label{eq1-Q4}\\
+		\end{IEEEeqnarray*}
+		
+		En combinant les inégalités \ref{resQ2}, \ref{resQ3} et \ref{eq1-Q4} on obtient que pour tout $m\leqslant x <y$ :
+		
+		\begin{equation*}
+			\Psi(x) \leqslant \liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant 	\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant \tau y - \Lambda (\tau)
+		\end{equation*}
+		
+		On peut alors faire tendre $y$ vers $x$ et utiliser la majoration $\tau x - \Lambda(\tau) \leqslant \Psi(x) $ pour obtenir : 
+		
+		\begin{equation*}
+			\Psi(x) \leqslant \liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant 	\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant \Psi(x) 
+		\end{equation*}
+		
+		Ce qui démontre bien l'identité voulue :
+		
+		\begin{equation}
+			\boxed{\lim_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) = \Psi(x)} \label{resQ4}
+		\end{equation}
 	
 \end{document}

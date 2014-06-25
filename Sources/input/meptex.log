@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.4.18)  24 JUN 2014 19:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2014.4.18)  25 JUN 2014 01:03
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -7,59 +7,6 @@ entering extended mode
 (./meptex.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
-! Undefined control sequence.
-l.5 \titleformat
-                {\section}{\usefont{T1}{cmr}{bx}{n}\Large }{\thesection}{0.4...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.5 \titleformat{\section
-                         }{\usefont{T1}{cmr}{bx}{n}\Large }{\thesection}{0.4...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.5 ...at{\section}{\usefont{T1}{cmr}{bx}{n}\Large
-                                                   }{\thesection}{0.4em}{}{}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.5 ...usefont{T1}{cmr}{bx}{n}\Large }{\thesection
-                                                  }{0.4em}{}{}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.5 ...font{T1}{cmr}{bx}{n}\Large }{\thesection}{0
-                                                  .4em}{}{}
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 4 in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no m in font nullfont!
 
 ! LaTeX Error: \thesubsection undefined.
 
@@ -68,14 +15,9 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.8 \renewcommand\thesubsection
-                               {\arabic{subsection}}
+                               {Question \arabic{section}.\arabic{subsection}}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 5--24
-[][]
- []
 
 ! Undefined control sequence.
 l.25 \patchcmd
@@ -223,11 +165,11 @@ Overfull \hbox (76.89975pt too wide) in paragraph at lines 27--30
 
  
 Here is how much of TeX's memory you used:
- 14 strings out of 493305
- 219 string characters out of 6139897
+ 12 strings out of 493305
+ 197 string characters out of 6139897
  51877 words of memory out of 5000000
- 3570 multiletter control sequences out of 15000+600000
- 5025 words of font info for 17 fonts, out of 8000000 for 9000
+ 3569 multiletter control sequences out of 15000+600000
+ 4249 words of font info for 16 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 14i,1n,14p,146b,67s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 13i,1n,10p,146b,67s stack positions out of 5000i,500n,10000p,200000b,80000s
 No pages of output.
