@@ -42,7 +42,7 @@
 				\item	Soit $\alpha\in [0,1]$ et $\lambda_1, \lambda_2$ dans $\mathbb{R}$.
 	
 						\begin{IEEEeqnarray*}{l C c}
-							\esp( \exp{(\alpha \lambda_1 + (1 - \alpha)\lambda_2) X}) &     =     &  \esp((\exp{\lambda_1 X})^{\alpha}(\exp{\lambda_2 X})^{1-\alpha}\\
+							\esp( \exp{(\alpha \lambda_1 + (1 - \alpha)\lambda_2) X}) &     =     &  \esp((\exp{\lambda_1 X})^{\alpha}(\exp{\lambda_2 X})^{1-\alpha})\\
 																   					  & \leqslant & (\esp(\exp{\lambda_1 X}))^{\alpha} (\esp(\exp{\lambda_2 X}))^{1- \alpha}
 						\end{IEEEeqnarray*}
 	
@@ -75,7 +75,7 @@
 							\exp{f_\lambda(m))}=\frac{\exp{\lambda \esp(X)}}{\esp(\exp{\lambda X})}
 						\end{equation*}			
 			
-						Or la fonction $x \mapsto \exp{\lambda x}$ est convexe, donc d'après l'inégalité de Jensen,	$\exp{\lambda \esp(X)}\leqslant\esp(\exp{\lambda X})$. Ainsi $\exp{f_\lambda(m))}\leqslant 1$ et $\lambda \esp(X) - \Lambda(\lambda)\leqslant 0$. 
+						Or la fonction $x \mapsto \exp{\lambda x}$ est convexe, donc d'après l'inégalité de Jensen,	$\exp{\lambda \esp(X)}\leqslant\esp(\exp{\lambda X})$. Ainsi $\exp{f_\lambda(m)}\leqslant 1$ et $\lambda \esp(X) - \Lambda(\lambda)\leqslant 0$. 
 			
 						Donc $\Psi(\esp(X))\leqslant0$. Or $\Psi\geqslant0$.
 			
@@ -112,7 +112,7 @@
 			
 			Comme les variables $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont des v.a indépendantes de même loi on peut écrire que $\esp(\exp{\lambda S_n})=(\esp(\exp{\lambda X}))^n=\exp{n\Lambda(\lambda)}$.
 	
-			Par le calcul on obtient alors :
+			On obtient alors :
 			\begin{IEEEeqnarray*}{rCl}
 				\P(S_n \geqslant nx)      	   		  & \leqslant &  \exp{-\lambda n x}\exp{n\Lambda(\lambda)} 				 \\
 				\log \P(S_n \geqslant nx) 	   		  & \leqslant & -\lambda n x + n\Lambda(\lambda) 						 \\
