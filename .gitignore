@@ -4,3 +4,4 @@
 *.ps
 *.log
 repo
+.DS_Store
