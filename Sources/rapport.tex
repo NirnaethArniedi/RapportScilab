@@ -187,15 +187,14 @@
 							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \underset{n\to+\infty}{\longrightarrow}\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
 						\end{equation*}
 				
-						Donc pour $n$ suffisamment grand il existe $\varepsilon>0$ tel que :
+						Donc pour $n$ suffisamment grand il existe $1/2>\varepsilon>0$ tel que :
 				
 						\begin{IEEEeqnarray*}{cCl}
 							\log \P(nx\leqslant S_n\leqslant ny) 			 & \geqslant & n (\Lambda (\tau) -\tau y  ) + \log (1/2-\varepsilon)\\
-														 				     & \geqslant & n ( \Lambda (\tau) - \tau y)                         \\
-							-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) & \leqslant & \tau y - \Lambda (\tau)                              \\
+							-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) & \leqslant & \tau y - \Lambda (\tau) - \underbrace{\frac{\log (1/2-\varepsilon)}{n}}_{\underset{n\to\infty}{\longrightarrow \,0}}                           \\
 						\end{IEEEeqnarray*}
 				
-						Ainsi on a bien montré : 
+						Un passage à la limite suffit alors à montrer que :
 				
 						\begin{equation}
 							\boxed{\limsup_{n\to\infty}-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) \leqslant \tau y - \Lambda (\tau)}\label{resQ3}
