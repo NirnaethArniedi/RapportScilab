@@ -202,32 +202,85 @@
 				
 			\end{itemize}
 	
-	\subsection{}\setcounter{equation}{0}
+		\subsection{}\setcounter{equation}{0} %Question 4
 		
 		
-		\begin{IEEEeqnarray*}{RCL}
-			\P(S_n \geqslant nx) 		 		     & \geqslant & \P(nx\leqslant S_n\leqslant ny) 					 \\
-			\log \P(S_n \geqslant nx) 				 & \geqslant & \log \P(nx\leqslant S_n\leqslant ny) 			 \\
-			-\frac{1}{n} \log \P(S_n \geqslant nx)   & \leqslant & -\frac{1}{n} \log \P(nx\leqslant S_n\leqslant ny) \\
-			\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) & \leqslant & \limsup_{n\to\infty} -\frac{1}{n} \log \P(nx\leqslant S_n\leqslant ny) \IEEEyesnumber \label{eq1-Q4}\\
-		\end{IEEEeqnarray*}
+			\begin{IEEEeqnarray*}{RCL}
+				\P(S_n \geqslant nx) 		 		     & \geqslant & \P(nx\leqslant S_n\leqslant ny) 					 \\
+				\log \P(S_n \geqslant nx) 				 & \geqslant & \log \P(nx\leqslant S_n\leqslant ny) 			 \\
+				-\frac{1}{n} \log \P(S_n \geqslant nx)   & \leqslant & -\frac{1}{n} \log \P(nx\leqslant S_n\leqslant ny) \\
+				\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) & \leqslant & \limsup_{n\to\infty} -\frac{1}{n} \log \P(nx\leqslant S_n\leqslant ny) \IEEEyesnumber \label{eq1-Q4}\\
+			\end{IEEEeqnarray*}
 		
-		En combinant les inégalités \ref{resQ2}, \ref{resQ3} et \ref{eq1-Q4} on obtient que pour tout $m\leqslant x <y$ :
+			En combinant les inégalités \ref{resQ2}, \ref{resQ3} et \ref{eq1-Q4} on obtient que pour tout $m\leqslant x <y$ :
 		
-		\begin{equation*}
-			\Psi(x) \leqslant \liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant 	\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant \tau y - \Lambda (\tau)
-		\end{equation*}
+			\begin{equation*}
+				\Psi(x) \leqslant \liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant 	\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant \tau y - \Lambda (\tau)
+			\end{equation*}
 		
-		On peut alors faire tendre $y$ vers $x$ et utiliser la majoration $\tau x - \Lambda(\tau) \leqslant \Psi(x) $ pour obtenir : 
+			On peut alors faire tendre $y$ vers $x$ et utiliser la majoration $\tau x - \Lambda(\tau) \leqslant \Psi(x) $ pour obtenir : 
 		
-		\begin{equation*}
-			\Psi(x) \leqslant \liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant 	\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant \Psi(x) 
-		\end{equation*}
+			\begin{equation*}
+				\Psi(x) \leqslant \liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant 	\limsup_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) \leqslant \Psi(x) 
+			\end{equation*}
 		
-		Ce qui démontre bien l'identité voulue :
+			Ce qui démontre bien l'identité voulue :
 		
-		\begin{equation}
-			\boxed{\lim_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) = \Psi(x)} \label{resQ4}
-		\end{equation}
+			\begin{equation}
+				\boxed{\lim_{n\to\infty}-\frac{1}{n} \log \P(S_n \geqslant nx) = \Psi(x)} \label{resQ4}
+			\end{equation}
+		
+		\subsection{} %Question 5
+		
+	\section{Densité locale pour le modèle d'invasion}
+		\subsection{} %Question 1
+			
+			Démontrons que $\esp(Z_n)=\esp(N)^n$
+			\begin{itemize}
+			
+				\item	La génération 0 ne comporte qu'un individu, donc à la génération 1, $Z_1\sim N$. Donc $\esp(Z_1)=\esp(N)^1$
+				
+				\item	Soit $n\geqslant 0$. On suppose que $\esp(Z_n)=\esp(N)^n$.
+				
+						Or $Z_{n+1}\sim N \cdotp Z_n$ . Donc $\esp(Z_{n+1}) = \esp(N \cdotp Z_n)$.
+						
+						Comme les variables $Z_n$ et $N$ sont indépendantes, on peut écrire que :
+						
+						$\esp(Z_{n+1}) = \esp(N) \esp( Z_n) = \esp(N)^{n+1}$.
+				\item Par récurrence, pour tout $n\geqslant0 $ ,\fbox{ $\esp(Z_n)=\esp(N)^n$}.
+				
+			\end{itemize}
 	
+			Considérons un individu à la génération $n$. Sa position est distribuée comme la variable $X_0 + X_0 + \cdots + X_n = S_n$. Ainsi la probabilité que cette individu se trouve dans un intervalle $I$ est donc $\P(S_n\in I)$.
+			
+			La loi de probabilité du nombre d'individus présents dans l'intervalle $I$ à la génération $n$ est donc égale à $\# \{i:X_n^i\in I\} \sim Z_n \P(S_n\in I)$.
+			
+			Donc $u_n(I)=\esp(\# \{i:X_n^i\in I\})=\esp(Z_n \P(S_n\in I))$. Or $\P(S_n\in I) \in \R$ et $\esp(Z_n)=\esp(N)^n$.
+			
+			On a donc bien :
+			
+			\begin{equation}
+				\boxed{u_n(I)=\esp(N)^n\,\P(S_n\in I)} \label{resQ21}
+			\end{equation}
+			
+		\subsection{} \setcounter{equation}{0}%Question 2
+			\begin{itemize}
+			
+			\item 	Soit $\varepsilon>0$. D'après \ref{resQ21} on peut écrire :
+			
+					\begin{equation*}
+						\frac{u_n([(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n])}{\esp(N)^n}=\P\left(\left|\frac{S_n}{n}-\esp(X)\right|\leqslant \varepsilon\right)
+					\end{equation*}
+			
+					Or la loi des grands nombres nous affirme que, pour un $\varepsilon$ positif donné, il existe $n_0$ tel que pour tout $n\geqslant n_0$, $\left|\frac{S_n}{n}-\esp(X)\right|\leqslant \varepsilon$.
+			
+					Ainsi :
+					\begin{IEEEeqnarray*}{rC}
+								  &\lim\limits_{n\to\infty}\P\left(\left|\frac{S_n}{n}-\esp(X)\right|\leqslant \varepsilon\right) =1\\
+						\text{et }&\boxed{\frac{u_n([(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n])}{\esp(N)^n}\underset{n\to\infty}{\longrightarrow} 1} \IEEEyesnumber \label{eq1-Q22}
+					\end{IEEEeqnarray*}
+			
+			
+			\item 
+			\end{itemize}
 \end{document}
