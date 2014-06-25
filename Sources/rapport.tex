@@ -9,11 +9,17 @@
 \definecolor{bleuX}{RGB}{0,62,92}
 \renewcommand{\arraystretch}{1.3}
 \renewcommand\labelitemi{\textbullet}
+\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
 \input{input/meptex}
 
 \newcommand{\esp}{\mathbb{E}}
 \renewcommand{\exp}{\mathrm{e}^}
 \renewcommand{\P}{\mathbb{P}}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Xt}{\tilde{X}}
+\newcommand{\St}{\tilde{S_n}}
+\newcommand{\sigt}{\tilde{\sigma}}
 
 
 \title{Vitesse d'invasion pour un modèle de reproduction et dispersion}
@@ -23,7 +29,7 @@
 \maketitle
 
 \section{Grandes déviations d'une marche aléatoire}
-	\subsection{}
+	\subsection{}\setcounter{equation}{0}
 	\renewcommand\labelitemi{\textbullet}
 	\begin{itemize}
 	
@@ -77,7 +83,7 @@
 
 	\end{itemize}
 		 
-	\subsection{}
+	\subsection{}\setcounter{equation}{0}
 	
 	\begin{IEEEeqnarray*}{cCc}
 		\P(S_n \geqslant nx) & = & \esp(\mathds{1}_{S_n-nx\geqslant0})
@@ -95,20 +101,95 @@
 	Comme les variables $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont des v.a indépendantes de même loi on peut écrire que $\esp(\exp{\lambda S_n})=(\esp(\exp{\lambda X}))^n=\exp{n\Lambda(\lambda)}$.
 	
 	Par le calcul on obtient alors :
-	\begin{IEEEeqnarray*}{ccCcc}
-		\P(S_n \geqslant nx) && \leqslant &&  \exp{-\lambda n x}\exp{n\Lambda(\lambda)} \\
-		\log \P(S_n \geqslant nx) && \leqslant && -\lambda n x + n\Lambda(\lambda) \\
-		-\frac{1}{n} \log \P(S_n \geqslant nx) && \geqslant && \lambda  x -\Lambda(\lambda) \IEEEyesnumber \label{IneQ2}\\
+	\begin{IEEEeqnarray*}{rCl}
+		\P(S_n \geqslant nx) & \leqslant &  \exp{-\lambda n x}\exp{n\Lambda(\lambda)} \\
+		\log \P(S_n \geqslant nx) & \leqslant & -\lambda n x + n\Lambda(\lambda) \\
+		-\frac{1}{n} \log \P(S_n \geqslant nx) & \geqslant & \lambda  x -\Lambda(\lambda) \IEEEyesnumber \label{IneQ2}\\
 	\end{IEEEeqnarray*}
 	
 	\ref{IneQ2} est vrai pour tout $\lambda$ positif et pour tout $n$. Donc le passage au supremum pour $\lambda$ positif et à la limite inférieure pour $n$ est possible et ne modifie pas l'inégalité.
 	
 	On obtient bien alors :
 	\begin{equation}
-	\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}
+		\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}
 	\end{equation}
 	
-	\subsection{}
+	\subsection{}\setcounter{equation}{0}
+	
+	\begin{itemize}
+		\item 	Montrons tout d'abord l'égalité proposée par l'énoncée.
+				Soit $\Phi$ une fonction mesurable bornée. Alors, en prenant $\varPi $ la loi de probabilité du vecteur $(X_1,\cdots,X_n)$,
+				
+				\begin{equation}
+					\esp(\Phi(X_1,\cdots,X_n))=\int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\varPi(\de x_1, \cdots, \de x_n) \label{eq1-Q3}
+				\end{equation}
+				
+				Or les v.a. $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont i.i.d. donc si on note $\P_X$ leur loi de probabilité, on peut écrire $\varPi(\de x_1, \cdots, \de x_n)=\prod\limits_{i=0}^{n}\P_X(\de x_i)=\prod\limits_{i=0}^{n}\P(X\in\de x_i)$.
+				
+				On peut alors réécrire \ref{eq1-Q3} et utiliser la relation fournie par l'énoncé ainsi :
+				
+				\begin{IEEEeqnarray*}{cCl}
+						\esp(\Phi(X_1,\cdots,X_n)) & = & \int_R\cdots\int_R\Phi(x_1,\cdots,x_n)\prod\limits_{i=0}^{n}\P(X\in\de x_i)\\
+						 & = & \int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\prod\limits_{i=0}^{n}\left(\frac{\esp(\exp{\tau X})}{\exp{\tau x_i}}\P(\Xt\in \de x_i)\right)\\
+						& = & \esp(\exp{\tau X})^n \int_R\cdots\int_R \Phi(x_1,\cdots,x_n) \exp{-\tau\tilde{S_n}} \prod\limits_{i=0}^{n}\P(\Xt\in \de x_i)\\
+						& = & \esp(\exp{\tau X})^n \int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\exp{-\tau\tilde{S_n}} \tilde{\varPi}(\de x_1, \cdots, \de x_n)\\
+				\end{IEEEeqnarray*}
+				
+				Ici, $\tilde{S_n}=\sum\limits_{i=0}^{n}\Xt_i$ et $\tilde{\varPi}$ est la loi de probabilité du vecteur $(\Xt_1,\cdots,\Xt_n)$ car les $(\Xt_i)_{i\in\llbracket 1,n\rrbracket}$ sont aussi i.i.d. et donc $\prod\limits_{i=0}^{n}\P(\Xt\in \de x_i)=\tilde{\varPi}(\de x_1, \cdots, \de x_n)$ de la même manière que pour les $X_i$.
+			
+				On reconnaît alors donc bien l'expression souhaitée :
+				
+				\begin{equation}
+					\boxed{\esp(\Phi(X_1,\cdots,X_n))=\esp(\exp{\tau X})^n\esp\left(\Phi(\Xt_1,\cdots,\Xt_n)\exp{-\tau\tilde{S_n}}\right)} \label{eq2-Q3}
+				\end{equation}
+			
+		\item	On calcule l’espérance de $\Xt$ ce qui sera utile plus bas.
+				\begin{IEEEeqnarray*}{rL}
+					\esp(\Xt)	 & = \int_{\R}u\,\P(\Xt\in\de u)\\
+							 	 & = \int_{\R}\frac{u \exp{\tau u}}{\esp(\exp{\tau X})} \P(X\in\de u)\\
+							 	 & = \frac{\esp(X \exp{\tau X})}{\esp(\exp{\tau X})}\\
+					\Aboxed{\esp(\Xt)& = x \IEEEyesnumber \label{eq3-Q3}}
+				\end{IEEEeqnarray*}
+				\\
+				\\
+				
+				
+		\item	Grâce à \ref{eq2-Q3} et \ref{eq3-Q3} on peut alors écrire :
+				
+				\begin{IEEEeqnarray*}{cCl}
+					\P(nx\leqslant S_n\leqslant ny) & = & \esp(\mathds{1}_{S_n\in[nx,ny]}) \\
+													& = & \esp(\exp{\tau X})^n \,\esp\left(\exp{-\tau\tilde{S_n}}\mathds{1}_{\tilde{S_n}\in[nx,ny]} \right)\\
+													& \geqslant & \esp(\exp{\tau X})^n \exp{-\tau ny} \esp(\mathds{1}_{\tilde{S_n}\in[nx,ny]})													
+				\end{IEEEeqnarray*}
+				
+				On pose $\mathrm{Var}(\Xt)=\tilde{\sigma}$. On peut alors écrire que :
+				
+				\begin{equation*}
+					\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right)=\esp\left(\mathds{1}_{\theta_n\in\left[0,\frac{\sqrt{n}}{\sigt}(y-x)\right]}\right) , \theta_n=\frac{\sqrt{n}}{\sigt}\left(\frac{\tilde{S_n}}{n}-x\right)
+				\end{equation*}
+				
+				Pour $n$ grand $\theta_n\sim\mathcal{N}(0,1)$ et $\frac{\sqrt{n}}{\sigt}(y-x)\rightarrow\infty$.
+				En limite, on peut donc écrire :
+				
+				\begin{equation*}
+					\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \underset{n\to+\infty}{\longrightarrow}\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
+				\end{equation*}
+				
+				Donc pour $n$ suffisamment grand il existe $\varepsilon>0$ tel que :
+				
+				\begin{IEEEeqnarray*}{cCl}
+					\log \P(nx\leqslant S_n\leqslant ny) & \geqslant & n (\Lambda (\tau) -\tau y  ) + \log (1/2-\varepsilon)\\
+														 & \geqslant & n ( \Lambda (\tau) - \tau y)\\
+					-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) & \leqslant & \tau y - \Lambda (\tau) \\
+				\end{IEEEeqnarray*}
+				
+				Ainsi on a bien montré : 
+				\begin{equation}
+				\boxed{\limsup_{n\to\infty}-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) \leqslant \tau y - \Lambda (\tau)}
+				\end{equation}
+	\end{itemize}
+	
+
 	
 	
 \end{document}
