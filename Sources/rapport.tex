@@ -4,13 +4,17 @@
 
 \usepackage{xcolor}
 \usepackage{dsfont}
-%\usepackage{layout}
-%\usepackage{rowcolor}
+
 \definecolor{bleuX}{RGB}{0,62,92}
+
 \renewcommand{\arraystretch}{1.3}
 \renewcommand\labelitemi{\textbullet}
 \renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
+
 \input{input/meptex}
+
+%\usepackage{layout}
+%\usepackage{rowcolor}
 
 \newcommand{\esp}{\mathbb{E}}
 \renewcommand{\exp}{\mathrm{e}^}
@@ -26,170 +30,181 @@
 \author{Augustin Lenormand \and Basile Bruneau}
 
 \begin{document}
-\maketitle
+	\maketitle
 
-\section{Grandes déviations d'une marche aléatoire}
-	\subsection{}\setcounter{equation}{0}
-	\renewcommand\labelitemi{\textbullet}
-	\begin{itemize}
+	\section{Grandes déviations d'une marche aléatoire}
+		\subsection{}\setcounter{equation}{0}
+			
+			\renewcommand\labelitemi{\textbullet}
+			
+			\begin{itemize}
 	
-	\item	Soit $\alpha\in [0,1]$ et $\lambda_1, \lambda_2$ dans $\mathbb{R}$.
+				\item	Soit $\alpha\in [0,1]$ et $\lambda_1, \lambda_2$ dans $\mathbb{R}$.
 	
-			\begin{IEEEeqnarray*}{l C c}
-				\esp( \exp{(\alpha \lambda_1 + (1 - \alpha)\lambda_2) X}) & = &  \esp((\exp{\lambda_1 X})^{\alpha}(\exp{\lambda_2 X})^{1-\alpha}\\
-												   					  & \leqslant & (\esp(\exp{\lambda_1 X}))^{\alpha} (\esp(\exp{\lambda_2 X}))^{1- \alpha}
-			\end{IEEEeqnarray*}
+						\begin{IEEEeqnarray*}{l C c}
+							\esp( \exp{(\alpha \lambda_1 + (1 - \alpha)\lambda_2) X}) &     =     &  \esp((\exp{\lambda_1 X})^{\alpha}(\exp{\lambda_2 X})^{1-\alpha}\\
+																   					  & \leqslant & (\esp(\exp{\lambda_1 X}))^{\alpha} (\esp(\exp{\lambda_2 X}))^{1- \alpha}
+						\end{IEEEeqnarray*}
 	
 	
-			Ici la dernière inégalité est l'inégalité de Hölder. En passant au logarithme il vient donc naturellement :	
+						Ici la dernière inégalité est l'inégalité de Hölder. En passant au logarithme il vient donc naturellement :	
 	
-			\begin{equation*}
-				\Lambda((\alpha \lambda_1 + (1 - \alpha)\lambda_2) X) \leqslant \alpha \Lambda(\lambda_1 X) + (1-\alpha) \Lambda(\lambda_2 X)
-			\end{equation*}
+						\begin{equation*}
+							\Lambda((\alpha \lambda_1 + (1 - \alpha)\lambda_2) X) \leqslant \alpha \Lambda(\lambda_1 X) + (1-\alpha) \Lambda(\lambda_2 X)
+						\end{equation*}
 		
-			\fbox{Donc $\Lambda$ est convexe.}
+						\fbox{Donc $\Lambda$ est convexe.}
 		
-	\item	De même les fonctions $f_\lambda$ telles que $f_\lambda (x)=\lambda x - \Lambda (\lambda)$ sont toutes convexes. 
-			Donc par définition leurs épigraphes sont convexes.
+				\item	De même les fonctions $f_\lambda$ telles que $f_\lambda (x)=\lambda x - \Lambda (\lambda)$ sont toutes convexes. Donc par définition leurs épigraphes sont convexes.
+			
+						Or l'épigraphe du supremum pour $\lambda$ dans $\mathbb{R}$ de ces fonctions est l'intersection des épigraphes de toutes ces fonctions. Comme intersection d'ensemble convexes , il est donc convexe lui aussi. Donc l'épigraphe de $\Psi$ est convexe.
 		
-			Or l'épigraphe du supremum pour $\lambda$ dans $\mathbb{R}$ de ces fonctions est l'intersection des épigraphes de toutes ces fonctions. Comme intersection d'ensemble convexes , il est donc convexe lui aussi. Donc l'épigraphe de $\Psi$ est convexe.
-		
-			\fbox{Donc $\Psi$ est convexe.}
+						\fbox{Donc $\Psi$ est convexe.}
 
-	\item	$\Lambda(0)=0$ donc :
-			\begin{equation*}
-			\forall x \in \mathbb{R}, \sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda)) \geqslant 0\cdotp x - \Lambda(0) = 0
-			\end{equation*}	
-			\underline{Donc $\Psi\geqslant0$.}
+				\item	$\Lambda(0)=0$ donc :
+							
+						\begin{equation*}
+							\forall x \in \mathbb{R}, \sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda)) \geqslant 0\cdotp x - \Lambda(0) = 0
+						\end{equation*}	
+						
+						\underline{Donc $\Psi\geqslant0$.}
 			
-			Soit $\lambda$ dans $\mathbb{R}$.
-			\begin{equation*}
-			\exp{f_\lambda(m))}=\frac{\exp{\lambda \esp(X)}}{\esp(\exp{\lambda X})}
-			\end{equation*}			
-			Or la fonction $x \mapsto \exp{\lambda x}$ est convexe, donc d'après l'inégalité de Jensen,	$\exp{\lambda \esp(X)}\leqslant\esp(\exp{\lambda X})$. Ainsi $\exp{f_\lambda(m))}\leqslant 1$ et $\lambda \esp(X) - \Lambda(\lambda)\leqslant 0$. 
+						Soit $\lambda$ dans $\mathbb{R}$.
+		
+						\begin{equation*}
+							\exp{f_\lambda(m))}=\frac{\exp{\lambda \esp(X)}}{\esp(\exp{\lambda X})}
+						\end{equation*}			
 			
-			Donc $\Psi(\esp(X))\leqslant0$. Or $\Psi\geqslant0$.
+						Or la fonction $x \mapsto \exp{\lambda x}$ est convexe, donc d'après l'inégalité de Jensen,	$\exp{\lambda \esp(X)}\leqslant\esp(\exp{\lambda X})$. Ainsi $\exp{f_\lambda(m))}\leqslant 1$ et $\lambda \esp(X) - \Lambda(\lambda)\leqslant 0$. 
 			
-			\fbox{Donc $\Psi$ admet un minimum en $m$ et $\Psi(m)=0$.}
+						Donc $\Psi(\esp(X))\leqslant0$. Or $\Psi\geqslant0$.
+			
+						\fbox{Donc $\Psi$ admet un minimum en $m$ et $\Psi(m)=0$.}
 
-	\item	Soit $x\geqslant m$ et $\lambda <0$. Alors on peut écrire :
-			\begin{IEEEeqnarray*}{C}
-			\lambda x -\Lambda(\lambda) \leqslant \lambda m - \Lambda(\lambda) = 0\\
-			\lambda x -\Lambda(\lambda) \leqslant0 \leqslant\sup_{\lambda \in \mathbb{R}}\{\lambda x - \Lambda(\lambda)\}
-			\end{IEEEeqnarray*}
+				\item	Soit $x\geqslant m$ et $\lambda <0$. Alors on peut écrire :
+						
+						\begin{IEEEeqnarray*}{C}
+							\lambda x -\Lambda(\lambda) \leqslant \lambda m - \Lambda(\lambda) = 0\\
+							\lambda x -\Lambda(\lambda) \leqslant0 \leqslant\sup_{\lambda \in \mathbb{R}}\{\lambda x - \Lambda(\lambda)\}
+						\end{IEEEeqnarray*}
 			
-			\fbox{Donc prendre le supremum des $f_\lambda$ pour $\lambda\geqslant0$ est suffisant pour définir $\Psi$}
-			
-
-	\end{itemize}
+						\fbox{Donc prendre le supremum des $f_\lambda$ pour $\lambda\geqslant0$ est suffisant pour définir $\Psi$}
+		
+			\end{itemize}
 		 
-	\subsection{}\setcounter{equation}{0}
+		\subsection{}\setcounter{equation}{0}
 	
-	\begin{IEEEeqnarray*}{cCc}
-		\P(S_n \geqslant nx) & = & \esp(\mathds{1}_{S_n-nx\geqslant0})
-	\end{IEEEeqnarray*}
+			\begin{IEEEeqnarray*}{cCc}
+				\P(S_n \geqslant nx) & = & \esp(\mathds{1}_{S_n-nx\geqslant0})
+			\end{IEEEeqnarray*}
 	
-	Comme $S_n-nx\geqslant0$ alors pour tout $\lambda$ positif, $\exp{\lambda (S_n-nx)}\geqslant1$ et
+			Comme $S_n-nx\geqslant0$ alors pour tout $\lambda$ positif, $\exp{\lambda (S_n-nx)}\geqslant1$ et
 
-	\begin{equation*}
-		\esp(\mathds{1}_{S_n-nx\geqslant0}) \leqslant \esp(\exp{\lambda (S_n-nx)}\mathds{1}_{S_n-nx\geqslant0}) \leqslant \esp(\exp{\lambda (S_n - x)})
-	\end{equation*}
-	On a donc :
-	\begin{equation*}
-	\P(S_n \geqslant nx) \leqslant \exp{-\lambda n x}\esp(\exp{\lambda S_n})
-	\end{equation*}
-	Comme les variables $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont des v.a indépendantes de même loi on peut écrire que $\esp(\exp{\lambda S_n})=(\esp(\exp{\lambda X}))^n=\exp{n\Lambda(\lambda)}$.
+			\begin{equation*}
+				\esp(\mathds{1}_{S_n-nx\geqslant0}) \leqslant \esp(\exp{\lambda (S_n-nx)}\mathds{1}_{S_n-nx\geqslant0}) \leqslant \esp(\exp{\lambda (S_n - x)})
+			\end{equation*}
 	
-	Par le calcul on obtient alors :
-	\begin{IEEEeqnarray*}{rCl}
-		\P(S_n \geqslant nx) & \leqslant &  \exp{-\lambda n x}\exp{n\Lambda(\lambda)} \\
-		\log \P(S_n \geqslant nx) & \leqslant & -\lambda n x + n\Lambda(\lambda) \\
-		-\frac{1}{n} \log \P(S_n \geqslant nx) & \geqslant & \lambda  x -\Lambda(\lambda) \IEEEyesnumber \label{IneQ2}\\
-	\end{IEEEeqnarray*}
-	
-	\ref{IneQ2} est vrai pour tout $\lambda$ positif et pour tout $n$. Donc le passage au supremum pour $\lambda$ positif et à la limite inférieure pour $n$ est possible et ne modifie pas l'inégalité.
-	
-	On obtient bien alors :
-	\begin{equation}
-		\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}
-	\end{equation}
-	
-	\subsection{}\setcounter{equation}{0}
-	
-	\begin{itemize}
-		\item 	Montrons tout d'abord l'égalité proposée par l'énoncée.
-				Soit $\Phi$ une fonction mesurable bornée. Alors, en prenant $\varPi $ la loi de probabilité du vecteur $(X_1,\cdots,X_n)$,
-				
-				\begin{equation}
-					\esp(\Phi(X_1,\cdots,X_n))=\int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\varPi(\de x_1, \cdots, \de x_n) \label{eq1-Q3}
-				\end{equation}
-				
-				Or les v.a. $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont i.i.d. donc si on note $\P_X$ leur loi de probabilité, on peut écrire $\varPi(\de x_1, \cdots, \de x_n)=\prod\limits_{i=0}^{n}\P_X(\de x_i)=\prod\limits_{i=0}^{n}\P(X\in\de x_i)$.
-				
-				On peut alors réécrire \ref{eq1-Q3} et utiliser la relation fournie par l'énoncé ainsi :
-				
-				\begin{IEEEeqnarray*}{cCl}
-						\esp(\Phi(X_1,\cdots,X_n)) & = & \int_R\cdots\int_R\Phi(x_1,\cdots,x_n)\prod\limits_{i=0}^{n}\P(X\in\de x_i)\\
-						 & = & \int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\prod\limits_{i=0}^{n}\left(\frac{\esp(\exp{\tau X})}{\exp{\tau x_i}}\P(\Xt\in \de x_i)\right)\\
-						& = & \esp(\exp{\tau X})^n \int_R\cdots\int_R \Phi(x_1,\cdots,x_n) \exp{-\tau\tilde{S_n}} \prod\limits_{i=0}^{n}\P(\Xt\in \de x_i)\\
-						& = & \esp(\exp{\tau X})^n \int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\exp{-\tau\tilde{S_n}} \tilde{\varPi}(\de x_1, \cdots, \de x_n)\\
-				\end{IEEEeqnarray*}
-				
-				Ici, $\tilde{S_n}=\sum\limits_{i=0}^{n}\Xt_i$ et $\tilde{\varPi}$ est la loi de probabilité du vecteur $(\Xt_1,\cdots,\Xt_n)$ car les $(\Xt_i)_{i\in\llbracket 1,n\rrbracket}$ sont aussi i.i.d. et donc $\prod\limits_{i=0}^{n}\P(\Xt\in \de x_i)=\tilde{\varPi}(\de x_1, \cdots, \de x_n)$ de la même manière que pour les $X_i$.
+			On a donc :
 			
-				On reconnaît alors donc bien l'expression souhaitée :
-				
-				\begin{equation}
-					\boxed{\esp(\Phi(X_1,\cdots,X_n))=\esp(\exp{\tau X})^n\esp\left(\Phi(\Xt_1,\cdots,\Xt_n)\exp{-\tau\tilde{S_n}}\right)} \label{eq2-Q3}
-				\end{equation}
+			\begin{equation*}
+				\P(S_n \geqslant nx) \leqslant \exp{-\lambda n x}\esp(\exp{\lambda S_n})
+			\end{equation*}
 			
-		\item	On calcule l’espérance de $\Xt$ ce qui sera utile plus bas.
-				\begin{IEEEeqnarray*}{rL}
-					\esp(\Xt)	 & = \int_{\R}u\,\P(\Xt\in\de u)\\
-							 	 & = \int_{\R}\frac{u \exp{\tau u}}{\esp(\exp{\tau X})} \P(X\in\de u)\\
-							 	 & = \frac{\esp(X \exp{\tau X})}{\esp(\exp{\tau X})}\\
-					\Aboxed{\esp(\Xt)& = x \IEEEyesnumber \label{eq3-Q3}}
-				\end{IEEEeqnarray*}
+			Comme les variables $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont des v.a indépendantes de même loi on peut écrire que $\esp(\exp{\lambda S_n})=(\esp(\exp{\lambda X}))^n=\exp{n\Lambda(\lambda)}$.
+	
+			Par le calcul on obtient alors :
+			\begin{IEEEeqnarray*}{rCl}
+				\P(S_n \geqslant nx)      	   		  & \leqslant &  \exp{-\lambda n x}\exp{n\Lambda(\lambda)} 				 \\
+				\log \P(S_n \geqslant nx) 	   		  & \leqslant & -\lambda n x + n\Lambda(\lambda) 						 \\
+		-		\frac{1}{n} \log \P(S_n \geqslant nx) & \geqslant & \lambda  x -\Lambda(\lambda) \IEEEyesnumber \label{IneQ2}\\
+			\end{IEEEeqnarray*}
+	
+			\ref{IneQ2} est vrai pour tout $\lambda$ positif et pour tout $n$. Donc le passage au supremum pour $\lambda$ positif et à la limite inférieure pour $n$ est possible et ne modifie pas l'inégalité.
+	
+			On obtient bien alors :
+	
+			\begin{equation}
+				\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}
+			\end{equation}
+	
+		\subsection{}\setcounter{equation}{0}
+	
+			\begin{itemize}
+				\item 	Montrons tout d'abord l'égalité proposée par l'énoncée.	Soit $\Phi$ une fonction mesurable bornée. Alors, en prenant $\varPi $ la loi de probabilité du vecteur $(X_1,\cdots,X_n)$,
+				
+						\begin{equation}
+							\esp(\Phi(X_1,\cdots,X_n))=\int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\varPi(\de x_1, \cdots, \de x_n) \label{eq1-Q3}
+						\end{equation}
+				
+						Or les v.a. $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont i.i.d. donc si on note $\P_X$ leur loi de probabilité, on peut écrire $\varPi(\de x_1, \cdots, \de x_n)=\prod\limits_{i=0}^{n}\P_X(\de x_i)=\prod\limits_{i=0}^{n}\P(X\in\de x_i)$.
+				
+						On peut alors réécrire \ref{eq1-Q3} et utiliser la relation fournie par l'énoncé ainsi :
+				
+						\begin{IEEEeqnarray*}{cCl}
+							\esp(\Phi(X_1,\cdots,X_n)) & = & \int_R\cdots\int_R\Phi(x_1,\cdots,x_n)\prod\limits_{i=0}^{n}\P(X\in\de x_i)\\
+													   & = & \int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\prod\limits_{i=0}^{n}\left(\frac{\esp(\exp{\tau X})}{\exp{\tau x_i}}\P(\Xt\in \de x_i)\right)													 \\
+													   & = & \esp(\exp{\tau X})^n \int_R\cdots\int_R \Phi(x_1,\cdots,x_n) \exp{-\tau\tilde{S_n}} \prod\limits_{i=0}^{n}\P(\Xt\in \de x_i)										  \\
+													   & = & \esp(\exp{\tau X})^n \int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\exp{-\tau\tilde{S_n}} \tilde{\varPi}(\de x_1, \cdots, \de x_n)																   \\
+						\end{IEEEeqnarray*}
+				
+						Ici, $\tilde{S_n}=\sum\limits_{i=0}^{n}\Xt_i$ et $\tilde{\varPi}$ est la loi de probabilité du vecteur $(\Xt_1,\cdots,\Xt_n)$ car les $(\Xt_i)_{i\in\llbracket 1,n\rrbracket}$ sont aussi i.i.d. et donc $\prod\limits_{i=0}^{n}\P(\Xt\in \de x_i)=\tilde{\varPi}(\de x_1, \cdots, \de x_n)$ de la même manière que pour les $X_i$.
+			
+						On reconnaît alors donc bien l'expression souhaitée :
+				
+						\begin{equation}
+							\boxed{\esp(\Phi(X_1,\cdots,X_n))=\esp(\exp{\tau X})^n\esp\left(\Phi(\Xt_1,\cdots,\Xt_n)\exp{-\tau\tilde{S_n}}\right)} \label{eq2-Q3}
+						\end{equation}
+			
+				\item	On calcule l’espérance de $\Xt$ ce qui sera utile plus bas.
+						
+						\begin{IEEEeqnarray*}{rL}
+							\esp(\Xt)	 		 & = \int_{\R}u\,\P(\Xt\in\de u)                                     \\
+									 	 		 & = \int_{\R}\frac{u \exp{\tau u}}{\esp(\exp{\tau X})} \P(X\in\de u)\\
+							 	 	 	 		 & = \frac{\esp(X \exp{\tau X})}{\esp(\exp{\tau X})}                 \\
+							\Aboxed{\esp(\Xt)    & = x \IEEEyesnumber \label{eq3-Q3}  }                              \\
+						\end{IEEEeqnarray*}
 				\\
 				\\
 				
 				
-		\item	Grâce à \ref{eq2-Q3} et \ref{eq3-Q3} on peut alors écrire :
+				\item	Grâce à \ref{eq2-Q3} et \ref{eq3-Q3} on peut alors écrire :
 				
-				\begin{IEEEeqnarray*}{cCl}
-					\P(nx\leqslant S_n\leqslant ny) & = & \esp(\mathds{1}_{S_n\in[nx,ny]}) \\
-													& = & \esp(\exp{\tau X})^n \,\esp\left(\exp{-\tau\tilde{S_n}}\mathds{1}_{\tilde{S_n}\in[nx,ny]} \right)\\
-													& \geqslant & \esp(\exp{\tau X})^n \exp{-\tau ny} \esp(\mathds{1}_{\tilde{S_n}\in[nx,ny]})													
-				\end{IEEEeqnarray*}
+						\begin{IEEEeqnarray*}{cCl}
+							\P(nx\leqslant S_n\leqslant ny) &     = 	& \esp(\mathds{1}_{S_n\in[nx,ny]}) 											 \\
+															&     = 	& \esp(\exp{\tau X})^n \,\esp\left(\exp{-\tau\tilde{S_n}}\mathds{1}_{\tilde{S_n}\in[nx,ny]} \right)																		 			 \\
+															& \geqslant & \esp(\exp{\tau X})^n \exp{-\tau ny}\esp(\mathds{1}_{\tilde{S_n}\in[nx,ny]})\\	
+						\end{IEEEeqnarray*}
 				
-				On pose $\mathrm{Var}(\Xt)=\tilde{\sigma}$. On peut alors écrire que :
+						On pose $\mathrm{Var}(\Xt)=\tilde{\sigma}$. On peut alors écrire que :
 				
-				\begin{equation*}
-					\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right)=\esp\left(\mathds{1}_{\theta_n\in\left[0,\frac{\sqrt{n}}{\sigt}(y-x)\right]}\right) , \theta_n=\frac{\sqrt{n}}{\sigt}\left(\frac{\tilde{S_n}}{n}-x\right)
-				\end{equation*}
+						\begin{equation*}
+							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right)=\esp\left(\mathds{1}_{\theta_n\in\left[0,\frac{\sqrt{n}}{\sigt}(y-x)\right]}\right) , \theta_n=\frac{\sqrt{n}}{\sigt}\left(\frac{\tilde{S_n}}{n}-x\right)
+						\end{equation*}
 				
-				Pour $n$ grand $\theta_n\sim\mathcal{N}(0,1)$ et $\frac{\sqrt{n}}{\sigt}(y-x)\rightarrow\infty$.
-				En limite, on peut donc écrire :
+						Pour $n$ grand $\theta_n\sim\mathcal{N}(0,1)$ et $\frac{\sqrt{n}}{\sigt}(y-x)\rightarrow\infty$. En limite, on peut donc écrire :
 				
-				\begin{equation*}
-					\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \underset{n\to+\infty}{\longrightarrow}\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
-				\end{equation*}
+						\begin{equation*}
+							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \underset{n\to+\infty}{\longrightarrow}\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
+						\end{equation*}
 				
-				Donc pour $n$ suffisamment grand il existe $\varepsilon>0$ tel que :
+						Donc pour $n$ suffisamment grand il existe $\varepsilon>0$ tel que :
 				
-				\begin{IEEEeqnarray*}{cCl}
-					\log \P(nx\leqslant S_n\leqslant ny) & \geqslant & n (\Lambda (\tau) -\tau y  ) + \log (1/2-\varepsilon)\\
-														 & \geqslant & n ( \Lambda (\tau) - \tau y)\\
-					-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) & \leqslant & \tau y - \Lambda (\tau) \\
-				\end{IEEEeqnarray*}
+						\begin{IEEEeqnarray*}{cCl}
+							\log \P(nx\leqslant S_n\leqslant ny) 			 & \geqslant & n (\Lambda (\tau) -\tau y  ) + \log (1/2-\varepsilon)\\
+														 				     & \geqslant & n ( \Lambda (\tau) - \tau y)                         \\
+							-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) & \leqslant & \tau y - \Lambda (\tau)                              \\
+						\end{IEEEeqnarray*}
 				
-				Ainsi on a bien montré : 
-				\begin{equation}
-				\boxed{\limsup_{n\to\infty}-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) \leqslant \tau y - \Lambda (\tau)}
-				\end{equation}
-	\end{itemize}
+						Ainsi on a bien montré : 
+				
+						\begin{equation}
+							\boxed{\limsup_{n\to\infty}-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) \leqslant \tau y - \Lambda (\tau)}
+						\end{equation}
+				
+			\end{itemize}
 	
-
+	\subsection{}\setcounter{equation}{0}
+		
 	
 	
 \end{document}
