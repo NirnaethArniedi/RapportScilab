@@ -9,7 +9,7 @@
 
 \renewcommand{\arraystretch}{1.3}
 \renewcommand\labelitemi{\textbullet}
-\renewcommand{\theequation}{\arabic{subsection}.\arabic{equation}}
+\renewcommand{\theequation}{\arabic{equation}}
 
 \input{input/meptex}
 
@@ -24,7 +24,7 @@
 \newcommand{\Xt}{\tilde{X}}
 \newcommand{\St}{\tilde{S_n}}
 \newcommand{\sigt}{\tilde{\sigma}}
-
+\newcommand{\tend}{\underset{n\to\infty}{\longrightarrow}}
 
 \title{Vitesse d'invasion pour un modèle de reproduction et dispersion}
 \author{Augustin Lenormand \and Basile Bruneau}
@@ -33,7 +33,7 @@
 	\maketitle
 
 	\section{Grandes déviations d'une marche aléatoire}
-		\subsection{}\setcounter{equation}{0} %Question 1
+		\subsection{} %\setcounter{equation}{0} %Question 1
 			
 			\renewcommand\labelitemi{\textbullet}
 			
@@ -92,7 +92,7 @@
 		
 			\end{itemize}
 		 
-		\subsection{}\setcounter{equation}{0} %Question 2
+		\subsection{} %\setcounter{equation}{0} %Question 2
 	
 			\begin{IEEEeqnarray*}{cCc}
 				\P(S_n \geqslant nx) & = & \esp(\mathds{1}_{S_n-nx\geqslant0})
@@ -127,7 +127,7 @@
 				\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}\label{resQ2}
 			\end{equation}
 	
-		\subsection{}\setcounter{equation}{0} %Question 3
+		\subsection{} %\setcounter{equation}{0} %Question 3
 	
 			\begin{itemize}
 				\item 	Montrons tout d'abord l'égalité proposée par l'énoncée.	Soit $\Phi$ une fonction mesurable bornée. Alors, en prenant $\varPi $ la loi de probabilité du vecteur $(X_1,\cdots,X_n)$,
@@ -164,8 +164,6 @@
 							\Aboxed{\esp(\Xt)    & = x \IEEEyesnumber \label{eq3-Q3}  }                              \\
 						\end{IEEEeqnarray*}
 				\\
-				\\
-				
 				
 				\item	Grâce à \ref{eq2-Q3} et \ref{eq3-Q3} on peut alors écrire :
 				
@@ -184,14 +182,14 @@
 						Or $\esp(\Xt)=x$, donc pour $n$ grand $\theta_n\sim\mathcal{N}(0,1)$ et $\frac{\sqrt{n}}{\sigt}(y-x)\rightarrow\infty$. En limite, on peut donc écrire :
 				
 						\begin{equation*}
-							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \underset{n\to+\infty}{\longrightarrow}\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
+							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \tend\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
 						\end{equation*}
 				
 						Donc pour $n$ suffisamment grand il existe $1/2>\varepsilon>0$ tel que :
 				
 						\begin{IEEEeqnarray*}{cCl}
 							\log \P(nx\leqslant S_n\leqslant ny) 			 & \geqslant & n (\Lambda (\tau) -\tau y  ) + \log (1/2-\varepsilon)\\
-							-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) & \leqslant & \tau y - \Lambda (\tau) - \underbrace{\frac{\log (1/2-\varepsilon)}{n}}_{\underset{n\to\infty}{\longrightarrow \,0}}                           \\
+							-\frac{1}{n}\log \P(nx\leqslant S_n\leqslant ny) & \leqslant & \tau y - \Lambda (\tau) - \underbrace{\frac{\log (1/2-\varepsilon)}{n}}_{\tend \,0}                         \\
 						\end{IEEEeqnarray*}
 				
 						Un passage à la limite suffit alors à montrer que :
@@ -202,7 +200,7 @@
 				
 			\end{itemize}
 	
-		\subsection{}\setcounter{equation}{0} %Question 4
+		\subsection{} %\setcounter{equation}{0} %Question 4
 		
 		
 			\begin{IEEEeqnarray*}{RCL}
@@ -263,10 +261,15 @@
 				\boxed{u_n(I)=\esp(N)^n\,\P(S_n\in I)} \label{resQ21}
 			\end{equation}
 			
-		\subsection{} \setcounter{equation}{0}%Question 2
-			\begin{itemize}
+		\subsection{} % \setcounter{equation}{0}%Question 2
 			
-			\item 	Soit $\varepsilon>0$. D'après \ref{resQ21} on peut écrire :
+			Soit $\varepsilon>0$. 
+			
+			\begin{itemize}
+			 
+			
+			 
+			\item 	 D'après \ref{resQ21} on peut écrire :
 			
 					\begin{equation*}
 						\frac{u_n([(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n])}{\esp(N)^n}=\P\left(\left|\frac{S_n}{n}-\esp(X)\right|\leqslant \varepsilon\right)
@@ -277,10 +280,33 @@
 					Ainsi :
 					\begin{IEEEeqnarray*}{rC}
 								  &\lim\limits_{n\to\infty}\P\left(\left|\frac{S_n}{n}-\esp(X)\right|\leqslant \varepsilon\right) =1\\
-						\text{et }&\boxed{\frac{u_n([(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n])}{\esp(N)^n}\underset{n\to\infty}{\longrightarrow} 1} \IEEEyesnumber \label{eq1-Q22}
+						\text{et }&\boxed{\frac{u_n([(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n])}{\esp(N)^n}\tend 1} \IEEEyesnumber \label{eq1-Q22}
 					\end{IEEEeqnarray*}
 			
 			
-			\item 
+			\item 	On pose $I_\varepsilon(n)=[(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n]$
+					\newcommand{\Ien}{I_\varepsilon(n)}
+			
+					\begin{multline*}
+						1 = \esp\left(\frac{\# \{i:X_n^i\in\Ien\}+\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right) \\= \esp\left(\frac{\# \{i:X_n^i\in\Ien\}}{\esp(N)^n}\right)+\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right)
+					\end{multline*}
+					
+					Donc, d'après \ref{eq1-Q22} on peut écrire :
+					\begin{IEEEeqnarray*}{RC}
+										&\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right)\tend 0\\
+						\text{Or }		& \esp\left(\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\right)\leqslant\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right) \\
+						\text{Donc } 	& \esp\left(\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\right) \tend 0\\
+					\end{IEEEeqnarray*}
+					
+					On a donc bien montré que en moyenne, et donc en probabilité, 
+					
+					\begin{equation}
+						\boxed{\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\tend 0}
+					\end{equation}
+					
 			\end{itemize}
+		
+		\subsection{} %Question 2.3
+		\subsection{} %Question 2.4
+			
 \end{document}
