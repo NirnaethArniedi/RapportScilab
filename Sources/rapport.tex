@@ -233,7 +233,7 @@
 	\section{Densité locale pour le modèle d'invasion}
 		\subsection{} %Question 1
 			
-			Démontrons que $\esp(Z_n)=\esp(N)^n$
+			\paragraph{} Démontrons que $\esp(Z_n)=\esp(N)^n$
 			\begin{itemize}
 			
 				\item	La génération 0 ne comporte qu'un individu, donc à la génération 1, $Z_1\sim N$. Donc $\esp(Z_1)=\esp(N)^1$
@@ -245,11 +245,11 @@
 						Comme les variables $Z_n$ et $N$ sont indépendantes, on peut écrire que :
 						
 						$\esp(Z_{n+1}) = \esp(N) \esp( Z_n) = \esp(N)^{n+1}$.
-				\item Par récurrence, pour tout $n\geqslant0 $ ,\fbox{ $\esp(Z_n)=\esp(N)^n$}.
+				\item Par récurrence, pour tout $n\geqslant0 $ , \fbox{$\esp(Z_n)=\esp(N)^n$}.
 				
 			\end{itemize}
 	
-			Considérons un individu à la génération $n$. Sa position est distribuée comme la variable $X_0 + X_0 + \cdots + X_n = S_n$. Ainsi la probabilité que cette individu se trouve dans un intervalle $I$ est donc $\P(S_n\in I)$.
+			\paragraph{}Considérons un individu à la génération $n$. Sa position est distribuée comme la variable $X_0 + X_0 + \cdots + X_n = S_n$. Ainsi la probabilité que cette individu se trouve dans un intervalle $I$ est donc $\P(S_n\in I)$.
 			
 			La loi de probabilité du nombre d'individus présents dans l'intervalle $I$ à la génération $n$ est donc égale à $\# \{i:X_n^i\in I\} \sim Z_n \P(S_n\in I)$.
 			
@@ -301,12 +301,48 @@
 					On a donc bien montré que en moyenne, et donc en probabilité, 
 					
 					\begin{equation}
-						\boxed{\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\tend 0}
+						\boxed{\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\tend 0}\label{res2Q22}
 					\end{equation}
 					
 			\end{itemize}
 		
 		\subsection{} %Question 2.3
 		\subsection{} %Question 2.4
+			
+			\begin{IEEEeqnarray*}{rCl}
+				u_n([\esp(X)n+\sigma a\sqrt{n},\esp(X)n+\sigma b\sqrt{n}]) & = &\esp(N)^n \P(S_n \in [\esp(X)n+\sigma a\sqrt{n},\esp(X)n+\sigma b\sqrt{n}])\\
+																		   & = &\esp(N)^n \P\left(\mu_n \in [a,b]\right)
+			\end{IEEEeqnarray*}
+			
+			Avec $\mu_n=\frac{\sqrt{n}}{\sigma}\left(\frac{S_n}{n}-\esp(X)\right)$. Or $\mu_n \sim \mathcal{N}(0,1)$ pour $n$ grand. Donc $\P\left(\mu_n \in [a,b]\right)\underset{n\to\infty}{\sim}\Pi(b)-\Pi(a)$. On obtient alors comme équivalent :
+			
+			\begin{equation}
+				\boxed{u_n([\esp(X)n+\sigma a\sqrt{n},\esp(X)n+\sigma b\sqrt{n}])\underset{n\to\infty}{\sim} \esp(N)^n(\Pi(b)-\Pi(a))}
+			\end{equation}
+			
+		\subsection{} %Question 2.5
+
+	\section{Vitesse d'invasion}
+		\subsection{} %Question 3.1
+			\begin{IEEEeqnarray*}{rCl}
+				u_n[an,\infty) & = & \esp(N)^n\, \P\left(\frac{S_n}{n}\geqslant a\right)\\
+				\frac{1}{n}\log (u_n[an,\infty)) & = & \log(\esp(N))+\frac{1}{n}\log\left(\P\left(\frac{S_n}{n}\geqslant a\right)\right)
+			\end{IEEEeqnarray*}
+			
+			D'après \ref{resQ4} on peut donc écrire :
+			
+			\begin{equation}
+				\boxed{\lim\limits_{n\to\infty}\frac{1}{n}\log (u_n[an,\infty)) = \log(\esp(N))-\Psi(a) \label{resQ31}}
+			\end{equation}
+			
+		\subsection{} %Question 3.2
+			
+			En prenant $a=v_n=R_n/n$, la quantité $u_n[R_n,\infty)$ est, par définition de $R_n$, finie et réduite à quelque éléments. En effet si le déplacement moyen est nul, et qu'on suppose que la variable $X$ n'est pas nulle (car cette hypothèse ne présenterai aucun intérêt d'étude), alors l'élément le plus à droite est relativement isolé. C'est ce qu'affirme la relation \ref{res2Q22}, à savoir que le nombre d'éléments qui s'écartent du paquet centré en $n*\esp(X)$ est négligeable.
+			
+			Donc si quelque soit $n$, $u_n[n\cdotp v_n,\infty)={\LARGE O}(1)$, alors $1/n \log u_n[n\cdotp v_n,\infty) = {\LARGE O}(1/n)$. À la limite on a donc $v_n\to v$ et la limite \ref{resQ31} nous indique donc que $v$ va être solution $\Psi(x)-\log(\esp(N))=0$.
+			
+		\subsection{} %Question 3.3
+			
+			
 			
 \end{document}
