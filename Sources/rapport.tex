@@ -4,6 +4,8 @@
 
 \usepackage{xcolor}
 \usepackage{dsfont}
+\usepackage{listings}
+\usepackage{graphicx}
 
 \definecolor{bleuX}{RGB}{0,62,92}
 
@@ -229,6 +231,39 @@
 			\end{equation}
 		
 		\subsection{} %Question 5
+			\paragraph{} On suppose que $X$ suit une loi de Bernouilli de paramètre $p$ : $\P(X=1) = p$ et $\P(X=0) = 1-p$.
+			Ainsi,
+			\begin{IEEEeqnarray*}{rCl}
+				\Lambda(\lambda) & = & \log( \esp( \exp{ \lambda X })) \\
+				& = & \log( p\exp{ \lambda . 1} + (1-p)\exp{ \lambda . 0}) \\
+				& = & \log( p\exp{ \lambda } + (1-p))
+			\end{IEEEeqnarray*}
+			
+			Donc,
+			\begin{IEEEeqnarray*}{rCl}
+				\lambda x - \Lambda(\lambda) & = &
+				\lambda x - \log( p\exp{ \lambda } + (1-p)) \\
+				& = & \lambda x - \lambda - \log( p + \frac{1-p}{\exp{\lambda}}) \\
+				& = & \lambda (x-1) - \log( p + \frac{1-p}{\exp{\lambda}}) \\
+				& \sim & \lambda (x - 1) \ \ \text{si} \ x > 1 \\
+				& \underset{\lambda\to +\infty}{\longrightarrow} & \infty  \ \ \text{si} \ x > 1
+			\end{IEEEeqnarray*}
+			
+			Ainsi, pour $x > p$, $\Psi(x) = \infty$.
+			
+			\paragraph{} Pour $p < x < 1$, comme $\lambda \longrightarrow \lambda x - \Lambda( \lambda )$ est concave (en tant que somme de deux fonctions concaves), on calcule le point où sa dériviée s'annule, et on l'injecte ; on trouve ainsi son maximum, c'est à dire $\Psi(x)$.
+			On trouve :
+			\begin{equation}
+			\boxed{\Psi(x) = x log\left(\frac{x (1-p)}{p (1-x)}\right)  - log\left(\frac{1-p}{1-x}\right)} \label{resQ5}
+			\end{equation}
+			
+			Pour les simulations nous avons fait plusieurs simulations en faisant varier à chaque fois $p$ et $x$. Nous avons tracé de la même couleur $-\frac{1}{n} \log \P(S_n \geqslant nx)$ et $\Psi(x)$.
+			Voici le code du programme :
+			\lstinputlisting[language=Scilab]{../Scilab/1.5.sci}
+			Et voici les 7 courbes obtenues. \\
+			\includegraphics{../Scilab/Images/1_5.png}
+			
+			La convergence est très lente, et ici on est déjà à $n = 1 000$, il est très difficile d'aller au dela. Cela suffit néanmoins à vérifier la limite précédente.
 		
 	\section{Densité locale pour le modèle d'invasion}
 		\subsection{} %Question 1
@@ -307,6 +342,16 @@
 			\end{itemize}
 		
 		\subsection{} %Question 2.3
+		Pour vérifier cette dernière limite, nous avons choisi $n = 20$, $\epsilon = 0.001$. Voici les courbes superposées de 30 simulations. \\
+		\includegraphics{../Scilab/Images/2_3_1.png}
+		Toutes les courbes tendent rapidement vers 0, ainsi la limite semble vérifiée. Le code de la simulation est ci-dessous.
+		\lstinputlisting[language=Scilab]{../Scilab/2.3.1.sci}
+		
+		Pour étudier le comportement de cette nouvelle variable aléatoire, nous avons choisi $n = 20$, $\epsilon = 0.6$ ; et nous avons réalisé 10 simulations. Voici le code du programme.
+		\lstinputlisting[language=Scilab]{../Scilab/2.3.2.sci}
+		Et voici les 10 courbes superposées. \\
+		\includegraphics{../Scilab/Images/2_3_2.png}
+		On observe donc une convergence vers 1, lorsque $N$ est égal à 2 p.s.
 		\subsection{} %Question 2.4
 			
 			\begin{IEEEeqnarray*}{rCl}
@@ -319,6 +364,12 @@
 			\begin{equation}
 				\boxed{u_n([\esp(X)n+\sigma a\sqrt{n},\esp(X)n+\sigma b\sqrt{n}])\underset{n\to\infty}{\sim} \esp(N)^n(\Pi(b)-\Pi(a))}
 			\end{equation}
+			
+			Pour les simulations, $N = 2$ p.s. et $X$ est toujours distribué suivant une loi de Bernouilli de paramètre $p$. Nous avons choisi $n = 20$, $a = -5$ et $b = 5$ (si on prend des valeurs de $a$ et $b$ plus faibles, on ne peut pas observer de convergence pour seulement 20 itérations, et le nombre d'individus augmentant selon $2^{n}$ on ne peut pas augmenter $n$). Voici le programme.\\
+			\lstinputlisting[language=Scilab]{../Scilab/2.4.sci}
+			
+			Et voici les courbes de 30 simulations superposées : on observe nettement une convergence exponentielle. \\
+			\includegraphics{../Scilab/Images/2_4.png}
 			
 		\subsection{} %Question 2.5
 
