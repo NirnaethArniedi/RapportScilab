@@ -1,0 +1,47 @@
+clf;
+
+function Y=simu(j,n,p,epsilon) 
+    Xi = [0];
+    D = [];
+    M=[]
+    Zn = 1;
+    for i = 1:n
+        N=grand(1,Zn,'geom',0.5); // Simulation de N_i, nombre d'enfant par individu de la g\'en\'eration i
+								   
+        G=[];
+        c=0;
+        for k = 1:Zn
+           if(N(1,k)>0) then      // Cr\'eation des positions de d\'epart
+              for l=1:N(1,k)      // de la g\'en\'eration i+1 \'a partir de
+                  c=c+1;          // N_i et des positions 
+                  G(1,c)=Xi(1,k); // de la g\'en\'eration i
+              end;
+           end;
+        end
+        Zn=sum(N);                 // Calcul de la taille de la population i+1
+        B=grand(1,Zn,'bin',1,0.6); //Simulation des variables de position 
+        Pos=B+G;                   // de la g\'en\'eration X_(i+1)
+        Xi=Pos;
+    end
+    E=(Xi>=((p-epsilon)*n));
+    H=(Xi<=((p+epsilon)*n));
+    nb=E*(H');
+    Y=nb/(2^(n));
+endfunction
+
+nbSimu=1000;
+n=14;
+p=0.7;
+nbCourbes=10;
+
+for k=1:nbCourbes
+    epsilon=0.5
+    ListeRes=parallel_run(1:nbSimu,n,p,epsilon,"simu");
+    //R\'ealisation de L=nbSimu exp\'eriences d'\'evolution d'une population.
+    SommeRes=cumsum(ListeRes);
+    Moyenne=[];
+    for i=1:nbSimu                    // Calcul des estimateurs successifs
+        Moyenne(1,i)=SommeRes(1,i)/i; // de l'esp\'erance de Y.
+    end;
+    plot2d(Moyenne,style=rand()*10);
+end;

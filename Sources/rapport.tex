@@ -1,4 +1,4 @@
-\documentclass[12pt,titlepage=true]{article}
+\documentclass[12pt]{article}
 
 \input{input/package}
 
@@ -6,13 +6,13 @@
 \usepackage{dsfont}
 \usepackage{listings}
 \usepackage{graphicx}
-
 \definecolor{bleuX}{RGB}{0,62,92}
 
 \renewcommand{\arraystretch}{1.3}
 \renewcommand\labelitemi{\textbullet}
 \renewcommand{\theequation}{\arabic{equation}}
-
+\newrgbcolor{zzttqq}{0.6 0.2 0}
+\psset{xunit=2.0cm,yunit=2.0cm,algebraic=true,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
 \input{input/meptex}
 
 %\usepackage{layout}
@@ -35,7 +35,7 @@
 	\maketitle
 
 	\section{Grandes déviations d'une marche aléatoire}
-		\subsection{} %\setcounter{equation}{0} %Question 1
+		\subsection{} %\setcounter{equation}{0} %Question 1.1
 			
 			\renewcommand\labelitemi{\textbullet}
 			
@@ -57,7 +57,7 @@
 		
 						\fbox{Donc $\Lambda$ est convexe.}
 		
-				\item	De même les fonctions $f_\lambda$ telles que $f_\lambda (x)=\lambda x - \Lambda (\lambda)$ sont toutes convexes. Donc par définition leurs épigraphes sont convexes.
+				\item	De même les fonctions $f_\lambda : x \mapsto \lambda x - \Lambda (\lambda)$ sont toutes convexes. Donc par définition leurs épigraphes sont convexes.
 			
 						Or l'épigraphe du supremum pour $\lambda$ dans $\mathbb{R}$ de ces fonctions est l'intersection des épigraphes de toutes ces fonctions. Comme intersection d'ensemble convexes , il est donc convexe lui aussi. Donc l'épigraphe de $\Psi$ est convexe.
 		
@@ -66,7 +66,7 @@
 				\item	$\Lambda(0)=0$ donc :
 							
 						\begin{equation*}
-							\forall x \in \mathbb{R}, \sup_{\lambda \in \mathbb{R}}(\lambda x - \Lambda(\lambda)) \geqslant 0\cdotp x - \Lambda(0) = 0
+							\forall x \in \mathbb{R}\, ,\, \sup_{\lambda \in \mathbb{R}}\{\lambda x - \Lambda(\lambda)\} \geqslant 0\cdotp x - \Lambda(0) = 0
 						\end{equation*}	
 						
 						\underline{Donc $\Psi\geqslant0$.}
@@ -74,12 +74,15 @@
 						Soit $\lambda$ dans $\mathbb{R}$.
 		
 						\begin{equation*}
-							\exp{f_\lambda(m))}=\frac{\exp{\lambda \esp(X)}}{\esp(\exp{\lambda X})}
+							\exp{f_\lambda(m)}=\frac{\exp{\lambda \esp(X)}}{\esp(\exp{\lambda X})}
 						\end{equation*}			
 			
-						Or la fonction $x \mapsto \exp{\lambda x}$ est convexe, donc d'après l'inégalité de Jensen,	$\exp{\lambda \esp(X)}\leqslant\esp(\exp{\lambda X})$. Ainsi $\exp{f_\lambda(m)}\leqslant 1$ et $\lambda \esp(X) - \Lambda(\lambda)\leqslant 0$. 
-			
-						Donc $\Psi(\esp(X))\leqslant0$. Or $\Psi\geqslant0$.
+						Or la fonction $x \mapsto \exp{\lambda x}$ est convexe, donc d'après l'inégalité de Jensen,
+						$\exp{\lambda \esp(X)}\leqslant\esp(\exp{\lambda X})$.
+						
+						Ainsi $\exp{f_\lambda(m)}\leqslant 1$ et $\lambda \esp(X) - \Lambda(\lambda)\leqslant 0$. Donc $\Psi(\esp(X))\leqslant0$. 
+						
+						Or $\Psi\geqslant0$.
 			
 						\fbox{Donc $\Psi$ admet un minimum en $m$ et $\Psi(m)=0$.}
 
@@ -90,11 +93,11 @@
 							\lambda x -\Lambda(\lambda) \leqslant0 \leqslant\sup_{\lambda \in \mathbb{R}}\{\lambda x - \Lambda(\lambda)\}
 						\end{IEEEeqnarray*}
 			
-						\fbox{Donc prendre le supremum des $f_\lambda$ pour $\lambda\geqslant0$ est suffisant pour définir $\Psi$}
+						\fbox{Ainsi prendre le supremum des $f_\lambda$ pour $\lambda\geqslant0$ est suffisant pour définir $\Psi$}
 		
 			\end{itemize}
 		 
-		\subsection{} %\setcounter{equation}{0} %Question 2
+		\subsection{} %\setcounter{equation}{0} %Question 1.2
 	
 			\begin{IEEEeqnarray*}{cCc}
 				\P(S_n \geqslant nx) & = & \esp(\mathds{1}_{S_n-nx\geqslant0})
@@ -129,7 +132,7 @@
 				\boxed{\liminf_{n\rightarrow\infty}-\frac{1}{n} \log \P(S_n \geqslant nx)\geqslant\sup_{\lambda\geqslant0}\{\lambda x - \Lambda(\lambda)\}}\label{resQ2}
 			\end{equation}
 	
-		\subsection{} %\setcounter{equation}{0} %Question 3
+		\subsection{} %\setcounter{equation}{0} %Question 1.3
 	
 			\begin{itemize}
 				\item 	Montrons tout d'abord l'égalité proposée par l'énoncée.	Soit $\Phi$ une fonction mesurable bornée. Alors, en prenant $\varPi $ la loi de probabilité du vecteur $(X_1,\cdots,X_n)$,
@@ -138,7 +141,7 @@
 							\esp(\Phi(X_1,\cdots,X_n))=\int_R\cdots\int_R \Phi(x_1,\cdots,x_n)\varPi(\de x_1, \cdots, \de x_n) \label{eq1-Q3}
 						\end{equation}
 				
-						Or les v.a. $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont i.i.d. donc si on note $\P_X$ leur loi de probabilité, on peut écrire $\varPi(\de x_1, \cdots, \de x_n)=\prod\limits_{i=0}^{n}\P_X(\de x_i)=\prod\limits_{i=0}^{n}\P(X\in\de x_i)$.
+						Or les v.a. $(X_i)_{i\in\llbracket 1,n\rrbracket}$ sont i.i.d. donc, si on note $\P_X$ leur loi de probabilité, on peut écrire $\varPi(\de x_1, \cdots, \de x_n)=\prod\limits_{i=0}^{n}\P_X(\de x_i)=\prod\limits_{i=0}^{n}\P(X\in\de x_i)$.
 				
 						On peut alors réécrire \ref{eq1-Q3} et utiliser la relation fournie par l'énoncé ainsi :
 				
@@ -184,10 +187,10 @@
 						Or $\esp(\Xt)=x$, donc pour $n$ grand $\theta_n\sim\mathcal{N}(0,1)$ et $\frac{\sqrt{n}}{\sigt}(y-x)\rightarrow\infty$. En limite, on peut donc écrire :
 				
 						\begin{equation*}
-							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \tend\int\limits_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
+							\esp\left(\mathds{1}_{\tilde{S_n}\in[nx,ny]}\right) \tend\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}}\exp{\frac{-x^2}{2}}\de x = 1/2.
 						\end{equation*}
 				
-						Donc pour $n$ suffisamment grand il existe $1/2>\varepsilon>0$ tel que :
+						Donc pour $n$ suffisamment grand il existe $\varepsilon\in]0,1/2[$ tel que :
 				
 						\begin{IEEEeqnarray*}{cCl}
 							\log \P(nx\leqslant S_n\leqslant ny) 			 & \geqslant & n (\Lambda (\tau) -\tau y  ) + \log (1/2-\varepsilon)\\
@@ -202,7 +205,7 @@
 				
 			\end{itemize}
 	
-		\subsection{} %\setcounter{equation}{0} %Question 4
+		\subsection{} %\setcounter{equation}{0} %Question 1.4
 		
 		
 			\begin{IEEEeqnarray*}{RCL}
@@ -231,47 +234,58 @@
 			\end{equation}
 		
 		\subsection{} %Question 5
-			\paragraph{} On suppose que $X$ suit une loi de Bernouilli de paramètre $p$ : $\P(X=1) = p$ et $\P(X=0) = 1-p$.
-			Ainsi,
-			\begin{IEEEeqnarray*}{rCl}
-				\Lambda(\lambda) & = & \log( \esp( \exp{ \lambda X })) \\
-				& = & \log( p\exp{ \lambda . 1} + (1-p)\exp{ \lambda . 0}) \\
-				& = & \log( p\exp{ \lambda } + (1-p))
-			\end{IEEEeqnarray*}
-			
-			Donc,
-			\begin{IEEEeqnarray*}{rCl}
-				\lambda x - \Lambda(\lambda) & = &
-				\lambda x - \log( p\exp{ \lambda } + (1-p)) \\
-				& = & \lambda x - \lambda - \log( p + \frac{1-p}{\exp{\lambda}}) \\
-				& = & \lambda (x-1) - \log( p + \frac{1-p}{\exp{\lambda}}) \\
-				& \sim & \lambda (x - 1) \ \ \text{si} \ x > 1 \\
-				& \underset{\lambda\to +\infty}{\longrightarrow} & \infty  \ \ \text{si} \ x > 1
+			\paragraph{} On suppose que $X$ suit une loi de Bernouilli de paramètre $p$ :
+			\begin{equation*}
+			\begin{dcases}
+			\P(X=1) = p\\
+			\P(X=0) = 1-p
+			\end{dcases}
+			\end{equation*}
+			\begin{IEEEeqnarray*}{rrCl}
+				\text{Ainsi, }&\Lambda(\lambda) & = & \log( \esp( \exp{ \lambda X })) \\
+				&& = & \log( p\exp{ \lambda . 1} + (1-p)\exp{ \lambda . 0}) \\
+				&& = & \log( p\exp{ \lambda } + (1-p))\\
+				&&&\\			
+				\text{Donc }\quad&\lambda x - \Lambda(\lambda)& = &\lambda x - \log( p\exp{ \lambda } + (1-p)) \\
+							&				& = & \lambda x - \lambda - \log\left( p + \frac{1-p}{\exp{\lambda}}\right) \\
+							&			    & = & \lambda (x-1) - \log\left( p + \frac{1-p}{\exp{\lambda}}\right) \\
+				&\lambda x - \Lambda(\lambda)& \sim & \lambda (x - 1) \ \ \text{si} \ x > 1 \\
+				&\lambda x - \Lambda(\lambda)& \underset{\lambda\to +\infty}{\longrightarrow} & \infty  \ \ \text{si} \ x > 1
 			\end{IEEEeqnarray*}
 			
 			Ainsi, pour $x > p$, $\Psi(x) = \infty$.
 			
-			\paragraph{} Pour $p < x < 1$, comme $\lambda \longrightarrow \lambda x - \Lambda( \lambda )$ est concave (en tant que somme de deux fonctions concaves), on calcule le point où sa dériviée s'annule, et on l'injecte ; on trouve ainsi son maximum, c'est à dire $\Psi(x)$.
-			On trouve :
+			\paragraph{} Pour $p < x < 1$, comme $g_x : \lambda \mapsto \lambda x - \Lambda( \lambda )$ est concave (en tant que somme de deux fonctions concaves), on calcule le point où sa dérivée s'annule, et on l'injecte. On trouve ainsi son maximum, c'est à dire $\Psi(x)$ :
 			\begin{equation}
-			\boxed{\Psi(x) = x log\left(\frac{x (1-p)}{p (1-x)}\right)  - log\left(\frac{1-p}{1-x}\right)} \label{resQ5}
+			\boxed{\Psi(x) = x \log\left(\frac{x (1-p)}{p (1-x)}\right)  - \log\left(\frac{1-p}{1-x}\right)} \label{resQ5}
 			\end{equation}
 			
-			Pour les simulations nous avons fait plusieurs simulations en faisant varier à chaque fois $p$ et $x$. Nous avons tracé de la même couleur $-\frac{1}{n} \log \P(S_n \geqslant nx)$ et $\Psi(x)$.
-			Voici le code du programme :
-			\lstinputlisting[language=Scilab]{../Scilab/1.5.sci}
-			Et voici les 7 courbes obtenues. \\
-			\includegraphics{../Scilab/Images/1_5.png}
 			
-			La convergence est très lente, et ici on est déjà à $n = 1 000$, il est très difficile d'aller au dela. Cela suffit néanmoins à vérifier la limite précédente.
-		
+			\paragraph{}Pour les simulations nous avons fait plusieurs simulations en faisant varier à chaque fois $p$ et $x$. Nous avons tracé de la même couleur $-\frac{1}{n} \log \P(S_n \geqslant nx)$ et $\Psi(x)$.
+			
+			Voici le code du programme :
+			
+			\begin{mdframed}[default]
+				\lstinputlisting[language=Scilab]{../Scilab/1.5.sci}
+			\end{mdframed}		
+			
+			
+			\begin{figure}[H]
+				\centering
+				\caption{Modélisation de la limite \ref{resQ4} pour des lois de Bernouilli.}
+				\includegraphics[width=0.8\textwidth]{../Scilab/Images/1_5.eps}
+			\end{figure}
+						
+			La convergence est très lente, et ici on est déjà à $n = 1 000$, il est très difficile d'aller au delà. Cela suffit néanmoins à vérifier la limite précédente.
+			
+			
 	\section{Densité locale pour le modèle d'invasion}
-		\subsection{} %Question 1
+		\subsection{} %Question 2.1
 			
 			\paragraph{} Démontrons que $\esp(Z_n)=\esp(N)^n$
 			\begin{itemize}
 			
-				\item	La génération 0 ne comporte qu'un individu, donc à la génération 1, $Z_1\sim N$. Donc $\esp(Z_1)=\esp(N)^1$
+				\item	La génération 0 ne comporte qu'un individu donc, à la génération 1, $Z_1\sim N$. Donc $\esp(Z_1)=\esp(N)^1$
 				
 				\item	Soit $n\geqslant 0$. On suppose que $\esp(Z_n)=\esp(N)^n$.
 				
@@ -296,7 +310,7 @@
 				\boxed{u_n(I)=\esp(N)^n\,\P(S_n\in I)} \label{resQ21}
 			\end{equation}
 			
-		\subsection{} % \setcounter{equation}{0}%Question 2
+		\subsection{} % \setcounter{equation}{0}%Question 2.2
 			
 			Soit $\varepsilon>0$. 
 			
@@ -315,7 +329,7 @@
 					Ainsi :
 					\begin{IEEEeqnarray*}{rC}
 								  &\lim\limits_{n\to\infty}\P\left(\left|\frac{S_n}{n}-\esp(X)\right|\leqslant \varepsilon\right) =1\\
-						\text{et }&\boxed{\frac{u_n([(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n])}{\esp(N)^n}\tend 1} \IEEEyesnumber \label{eq1-Q22}
+						\text{et }&\boxed{\frac{u_n([(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n])}{\esp(N)^n}\tend 1} \IEEEyesnumber \label{res1Q22}
 					\end{IEEEeqnarray*}
 			
 			
@@ -326,14 +340,14 @@
 						1 = \esp\left(\frac{\# \{i:X_n^i\in\Ien\}+\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right) \\= \esp\left(\frac{\# \{i:X_n^i\in\Ien\}}{\esp(N)^n}\right)+\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right)
 					\end{multline*}
 					
-					Donc, d'après \ref{eq1-Q22} on peut écrire :
+					D'après \ref{eq1-Q22} on peut écrire :
 					\begin{IEEEeqnarray*}{RC}
 										&\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right)\tend 0\\
 						\text{Or }		& \esp\left(\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\right)\leqslant\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right) \\
 						\text{Donc } 	& \esp\left(\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\right) \tend 0\\
 					\end{IEEEeqnarray*}
 					
-					On a donc bien montré que en moyenne, et donc en probabilité, 
+					On a alors bien montré que en moyenne, et donc en probabilité, 
 					
 					\begin{equation}
 						\boxed{\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\tend 0}\label{res2Q22}
@@ -342,16 +356,45 @@
 			\end{itemize}
 		
 		\subsection{} %Question 2.3
-		Pour vérifier cette dernière limite, nous avons choisi $n = 20$, $\epsilon = 0.001$. Voici les courbes superposées de 30 simulations. \\
-		\includegraphics{../Scilab/Images/2_3_1.png}
-		Toutes les courbes tendent rapidement vers 0, ainsi la limite semble vérifiée. Le code de la simulation est ci-dessous.
-		\lstinputlisting[language=Scilab]{../Scilab/2.3.1.sci}
+			\subsubsection*{Modélisation de la limite \ref{res2Q22}}
+				Pour vérifier cette dernière limite, nous avons choisi $n = 20$, $\varepsilon = 0.001$ et $p$, la paramètre de la loi de Bernouilli de $X$, égal à $0.7$. Voici les courbes superposées de 30 simulations. 
 		
-		Pour étudier le comportement de cette nouvelle variable aléatoire, nous avons choisi $n = 20$, $\epsilon = 0.6$ ; et nous avons réalisé 10 simulations. Voici le code du programme.
-		\lstinputlisting[language=Scilab]{../Scilab/2.3.2.sci}
-		Et voici les 10 courbes superposées. \\
-		\includegraphics{../Scilab/Images/2_3_2.png}
-		On observe donc une convergence vers 1, lorsque $N$ est égal à 2 p.s.
+				\begin{figure}[H]
+					\centering
+					\caption{Simulations de la limite \ref{res2Q22} pour une loi de Bernouilli.}
+					\includegraphics[width=0.9\textwidth]{../Scilab/Images/2_3_1.eps}
+				\end{figure}
+		
+				Toutes les courbes tendent rapidement vers 0, ainsi la limite semble vérifiée. Le code de la simulation est ci-dessous.
+		
+				\begin{mdframed}[default]
+					\lstinputlisting[language=Scilab]{../Scilab/2.3.1.sci}
+				\end{mdframed}
+		
+			\subsubsection*{Modélisation de la limite \ref{res1Q22}}
+				Pour étudier le comportement de cette limite, dans le cas ou la loi de $N$ est une loi géométrique de moyenne $2$, nous avons été obligés de mettre en oeuvre une simulation plus complexe, dont le code nécessite quelques commentaires.
+				
+				Premièrement nous avons défini une fonction \textsf{simu} qui va réaliser une expérience d'évolution de population et va retourner $Y(n,\varepsilon)=\frac{\#\{i:X_n^i\in[(\esp(X)-\varepsilon)n,(\esp(X)+\varepsilon)n]\}}{\esp(N)^n}$  pour un $n$ donné. La valeur de $n$ est encore une fois limitée par les capacités de calcul de l'ordinateur.
+				
+				Ensuite pour estimer l'espérance de $Y$ nous avons effectué un nombre $L$ d'expériences et avons affiché l'évolution de l'estimateur $\frac{1}{l}\sum\limits_{i=1}^{l}Y_i$ pour $l$ allant de $1$ à $L$.
+				
+				Nous avons ensuite tracé les courbes d'évolution de $\esp(Y)$ pour plusieurs séries de $L$ expériences d'évolution de population.
+				
+				Voici le code de la modélisation :
+				\begin{mdframed}
+					\lstinputlisting[language=Scilab]{../Scilab/2.3.2.sci}	
+				\end{mdframed}
+				
+				Et voici le tracé obtenu par superpositions de 10 courbes avec pour paramètres: $n=14$, $L=1000$,$p=0.7$ et $\varepsilon=0.5$. On observe bien la convergence vers $1$ de $\esp(Y)$.
+				
+				\begin{figure}[H]
+					\centering
+					\caption{Simulations de la limite \ref{res1Q22}}
+					\includegraphics[width=\textwidth]{../Scilab/Images/2_3_2.eps}
+				\end{figure}
+				
+				On observe donc une convergence vers 1, lorsque $N$ est égal à 2 p.s.
+		
 		\subsection{} %Question 2.4
 			
 			\begin{IEEEeqnarray*}{rCl}
@@ -359,20 +402,65 @@
 																		   & = &\esp(N)^n \P\left(\mu_n \in [a,b]\right)
 			\end{IEEEeqnarray*}
 			
-			Avec $\mu_n=\frac{\sqrt{n}}{\sigma}\left(\frac{S_n}{n}-\esp(X)\right)$. Or $\mu_n \sim \mathcal{N}(0,1)$ pour $n$ grand. Donc $\P\left(\mu_n \in [a,b]\right)\underset{n\to\infty}{\sim}\Pi(b)-\Pi(a)$. On obtient alors comme équivalent :
+			Avec $\mu_n=\frac{\sqrt{n}}{\sigma}\left(\frac{S_n}{n}-\esp(X)\right)$. Or $\mu_n \sim \mathcal{N}(0,1)$ pour $n$ grand.
+			
+			Donc $\P\left(\mu_n \in [a,b]\right)\underset{n\to\infty}{\sim}\Pi(b)-\Pi(a)$. On obtient alors comme équivalent :
 			
 			\begin{equation}
-				\boxed{u_n([\esp(X)n+\sigma a\sqrt{n},\esp(X)n+\sigma b\sqrt{n}])\underset{n\to\infty}{\sim} \esp(N)^n(\Pi(b)-\Pi(a))}
+				\boxed{u_n([\esp(X)n+\sigma a\sqrt{n},\esp(X)n+\sigma b\sqrt{n}])\underset{n\to\infty}{\sim} \esp(N)^n(\Pi(b)-\Pi(a))} \label{resQ24}
 			\end{equation}
 			
-			Pour les simulations, $N = 2$ p.s. et $X$ est toujours distribué suivant une loi de Bernouilli de paramètre $p$. Nous avons choisi $n = 20$, $a = -5$ et $b = 5$ (si on prend des valeurs de $a$ et $b$ plus faibles, on ne peut pas observer de convergence pour seulement 20 itérations, et le nombre d'individus augmentant selon $2^{n}$ on ne peut pas augmenter $n$). Voici le programme.\\
-			\lstinputlisting[language=Scilab]{../Scilab/2.4.sci}
+			Pour les simulations, $N = 2$ p.s. et $X$ est toujours distribué suivant une loi de Bernouilli de paramètre $p$. Nous avons choisi $n = 20$, $a = -5$ et $b = 5$ (si on prend des valeurs de $a$ et $b$ plus faibles, on ne peut pas observer de convergence pour seulement 20 itérations, et le nombre d'individus augmentant selon $2^{n}$ on ne peut pas augmenter $n$ au delà de 20).
 			
-			Et voici les courbes de 30 simulations superposées : on observe nettement une convergence exponentielle. \\
-			\includegraphics{../Scilab/Images/2_4.png}
+			Voici le programme.
+
+			\begin{mdframed}
+				\lstinputlisting[language=Scilab]{../Scilab/2.4.sci}
+			\end{mdframed}
+				
+			
+			Et voici les courbes de 30 simulations superposées : on observe nettement une convergence exponentielle.
+			\begin{figure}[H]
+				\centering
+				\caption{Convergence de l'équivalent \ref{resQ24}}
+				\includegraphics[width=0.8\textwidth]{../Scilab/Images/2_4.eps}
+			\end{figure}
+			
 			
 		\subsection{} %Question 2.5
-
+			La population, au bout d'un temps suffisamment long va se répartir selon une gaussienne centrée en $n\esp(X)$ et d'écart type $\sigma$, d'après le théorème de la limite centrale. Ainsi la répartition de la population entre deux bornes $a$ et $b$ est conditionnée par les valeurs de $\Pi(a)$ et $\Pi(b)$.
+			
+			Par ailleurs comme la taille de la population évolue comme $\esp(N)^n$  la quantité d'individu entre les bornes $a$ et $b$ évolue comme $\esp(N)^n(\Pi(b)-\Pi(a))$. C'est ce qui est illustré, schématiquement sur la figure \ref{dess1}.
+			
+			
+			\begin{figure}[H]
+			\centering
+			\caption{Représentation schématique de l'équivalent \ref{resQ24}\label{dess1}}
+			\begin{pspicture*}(-3.8,-1)(3.8,1.5)
+			\pspolygon[linecolor=zzttqq,fillcolor=zzttqq,fillstyle=solid,opacity=0.1](-1.47,0.34)(-0.81,0.72)(-0.81,0)(-1.47,0)
+			\psplot[plotpoints=200]{-3.75}{3.75}{EXP((-x^2)/2)}
+			%\psline(-1.47,0.34)(-1.47,0)
+			%\psline(-0.81,0.72)(-0.81,0)
+			\psline[linecolor=zzttqq](-1.47,0.34)(-0.81,0.72)
+			\psline[linecolor=zzttqq](-0.81,0.72)(-0.81,0)
+			\psline[linecolor=zzttqq](-0.81,0)(-1.47,0)
+			\psline[linecolor=zzttqq](-1.47,0)(-1.47,0.34)
+			\psplot{-3.75}{3.75}{(-0-0*x)/0.67}
+			\psline(0,1)(0,0)
+			\psline{->}(1.86,0.7)(0.5,0.7)
+			\psline{->}(-1.60,0.35)(-1.07,0.35)
+			\rput[tl](1.87,0.8){$\int \propto \esp(N)^n$}
+			\rput[tl](-3.75,0.45){$\int \propto \esp(N)^n \,\Pi(b)-\Pi(a)$}
+			\begin{small}
+			\psdots[dotstyle=*,linecolor=darkgray](-0.81,0)
+			\rput[bl](-1,-0.2){\darkgray{$\sigma b\sqrt{n}$}}
+			%\psdots[dotstyle=*,linecolor=darkgray](-1.47,0)
+			\rput[bl](-1.70,-0.2){\darkgray{$\sigma a\sqrt{n}$}}
+			%\psdots[dotstyle=*,linecolor=darkgray](0,0)
+			\rput[bl](-0.1,-0.25){\darkgray{$n\esp(X)$}}
+			\end{small}
+			\end{pspicture*}
+		\end{figure}
 	\section{Vitesse d'invasion}
 		\subsection{} %Question 3.1
 			\begin{IEEEeqnarray*}{rCl}
@@ -391,8 +479,8 @@
 			En prenant $a=v_n=R_n/n$, la quantité $u_n[R_n,\infty)$ est, par définition de $R_n$, finie et réduite à quelque éléments. En effet si le déplacement moyen est nul, et qu'on suppose que la variable $X$ n'est pas nulle (car cette hypothèse ne présenterai aucun intérêt d'étude), alors l'élément le plus à droite est relativement isolé. C'est ce qu'affirme la relation \ref{res2Q22}, à savoir que le nombre d'éléments qui s'écartent du paquet centré en $n*\esp(X)$ est négligeable.
 			
 			Donc si quelque soit $n$, $u_n[n\cdotp v_n,\infty)={\LARGE O}(1)$, alors $1/n \log u_n[n\cdotp v_n,\infty) = {\LARGE O}(1/n)$. À la limite on a donc $v_n\to v$ et la limite \ref{resQ31} nous indique donc que $v$ va être solution $\Psi(x)-\log(\esp(N))=0$.
-			
-		\subsection{} %Question 3.3
+			\setcounter{subsection}{3}
+		\subsection{} %Question 3.4
 			
 			
 			
