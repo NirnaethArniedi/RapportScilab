@@ -13,7 +13,7 @@ for j = 1:nbSimulations
         B=rand(1,N^i);
         C=(B>=p)+[A,A];
         A=C;
-        D(i)=sum((A>=((p+epsilon)*i)))/N^i;
+        D(i)=sum((A>=((p+epsilon)*i)))/N^i
     end
-    plot2d(D, style=rand()*10);
+    plot2d(D,style=rand()*10)
 end

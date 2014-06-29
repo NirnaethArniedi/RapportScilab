@@ -253,7 +253,7 @@
 				&\lambda x - \Lambda(\lambda)& \underset{\lambda\to +\infty}{\longrightarrow} & \infty  \ \ \text{si} \ x > 1
 			\end{IEEEeqnarray*}
 			
-			Ainsi, pour $x > p$, $\Psi(x) = \infty$.
+			Ainsi, pour $x > 1$, $\Psi(x) = \infty$.
 			
 			\paragraph{} Pour $p < x < 1$, comme $g_x : \lambda \mapsto \lambda x - \Lambda( \lambda )$ est concave (en tant que somme de deux fonctions concaves), on calcule le point où sa dérivée s'annule, et on l'injecte. On trouve ainsi son maximum, c'est à dire $\Psi(x)$ :
 			\begin{equation}
@@ -340,7 +340,7 @@
 						1 = \esp\left(\frac{\# \{i:X_n^i\in\Ien\}+\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right) \\= \esp\left(\frac{\# \{i:X_n^i\in\Ien\}}{\esp(N)^n}\right)+\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right)
 					\end{multline*}
 					
-					D'après \ref{eq1-Q22} on peut écrire :
+					D'après \ref{res1Q22} on peut écrire :
 					\begin{IEEEeqnarray*}{RC}
 										&\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right)\tend 0\\
 						\text{Or }		& \esp\left(\frac{\# \{i:X_n^i\geqslant(\esp(X)-\varepsilon)n\}}{\esp(N)^n}\right)\leqslant\esp\left(\frac{\# \{i:X_n^i\notin\Ien\}}{\esp(N)^n}\right) \\
@@ -385,16 +385,15 @@
 					\lstinputlisting[language=Scilab]{../Scilab/2.3.2.sci}	
 				\end{mdframed}
 				
-				Et voici le tracé obtenu par superpositions de 10 courbes avec pour paramètres: $n=14$, $L=1000$,$p=0.7$ et $\varepsilon=0.5$. On observe bien la convergence vers $1$ de $\esp(Y)$.
+				Le tracé obtenu par superpositions de 10 courbes avec pour paramètres: $n=14$, $L=300$,$p=0.7$ et $\varepsilon=0.4$ est visible à la figure \ref{fig2.3.2}
 				
 				\begin{figure}[H]
 					\centering
-					\caption{Simulations de la limite \ref{res1Q22}}
-					\includegraphics[width=\textwidth]{../Scilab/Images/2_3_2.eps}
+					\caption{Simulations de la limite \ref{res1Q22}\label{fig2.3.2}}
+					\includegraphics[width=\textwidth]{../Scilab/Images/2_3_2_2.eps}
 				\end{figure}
 				
-				On observe donc une convergence vers 1, lorsque $N$ est égal à 2 p.s.
-		
+				 On observe bien la convergence vers $1$ de $\esp(Y)$, malgré une certaine dispersion autour de cette valeur qui peut s'expliquer par la valeur de $n$ assez faible ($14$).
 		\subsection{} %Question 2.4
 			
 			\begin{IEEEeqnarray*}{rCl}
@@ -480,7 +479,7 @@
 			
 			Donc si quelque soit $n$, $u_n[n\cdotp v_n,\infty)={\LARGE O}(1)$, alors $1/n \log u_n[n\cdotp v_n,\infty) = {\LARGE O}(1/n)$. À la limite on a donc $v_n\to v$ et la limite \ref{resQ31} nous indique donc que $v$ va être solution $\Psi(x)-\log(\esp(N))=0$.
 			\setcounter{subsection}{3}
-		\subsection{} %Question 3.4
+		%\subsection{} %Question 3.4
 			
 			
 			

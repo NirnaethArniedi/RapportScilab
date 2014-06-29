@@ -29,18 +29,18 @@ function Y=simu(j,n,p,epsilon)
     Y=nb/(2^(n));
 endfunction
 
-nbSimu=1000;
+nbSimu=300;
 n=14;
 p=0.7;
 nbCourbes=10;
 
 for k=1:nbCourbes
-    epsilon=0.5
+    epsilon=0.4
     ListeRes=parallel_run(1:nbSimu,n,p,epsilon,"simu");
     //Realisation de L=nbSimu experiences.
     SommeRes=cumsum(ListeRes);
     Moyenne=[];
-    for i=1:nbSimu                    //Calcul des estimateurs
+    for i=1:nbSimu               //Calcul des estimateurs
         Moyenne(1,i)=SommeRes(1,i)/i;//successifs
     end;                              // de E(Y).
     plot2d(Moyenne,style=rand()*10);
